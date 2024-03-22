@@ -126,12 +126,10 @@ return [
     ],
 
     /*'providers' => [
-
-    	SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class
-    ],
-    'aliases' => [
-
-    	'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class
+        App\Providers\QrCodeServiceProvider::class,
     ],*/
+    'aliases' => [
+    	'QrCodeFacade' => SimpleSoftwareIO\QrCode\Facades\QrCode::class
+    ],
 
 ];
