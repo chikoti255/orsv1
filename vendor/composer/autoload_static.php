@@ -546,6 +546,11 @@ class ComposerStaticInite5fbbe6137dc77bcd5b6646b5dd75b52
 
     public static $classMap = array (
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\QrCodeController' => __DIR__ . '/../..' . '/app/Http/Controllers/QrCodeController.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
+        'App\\Http\\Controllers\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsersController.php',
+        'App\\Jobs\\ProcessQrCodeScan' => __DIR__ . '/../..' . '/app/Jobs/ProcessQrCodeScan.php',
+        'App\\Models\\QrCodeModel' => __DIR__ . '/../..' . '/app/Models/QrCodeModel.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\QrCodeServiceProvider' => __DIR__ . '/../..' . '/app/Providers/QrCodeServiceProvider.php',

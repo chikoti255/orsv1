@@ -11,6 +11,8 @@
 <body>
     <div class="container">
 
+            <h2>qr code</h2>
+              <img src="data:image/png;base64, {{ base64_encode($qr_code_image) }}" alt="QR Code" />
     </div>
 </body>
 </html>

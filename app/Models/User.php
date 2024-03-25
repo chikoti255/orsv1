@@ -15,11 +15,14 @@ class User extends Authenticatable
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
+
      */
+      protected $table= 'users';
+
     protected $fillable = [
-        'name',
+        'id','first_name','last_name',
         'email',
-        'password',
+      'organization','country',
     ];
 
     /**
@@ -27,10 +30,10 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $hidden = [
+  /*  protected $hidden = [
         'password',
         'remember_token',
-    ];
+    ];*/
 
     /**
      * Get the attributes that should be cast.

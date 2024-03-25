@@ -31,7 +31,6 @@ return; // Exit the function if not found
 
 console.log(`html5-qrcode library found!, ${Html5QrcodeScanner}`);
 
-// Your QR code scanning logic using Html5Qrcode goes here
 })();
 </script>
 

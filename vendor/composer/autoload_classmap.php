@@ -7,6 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\QrCodeController' => $baseDir . '/app/Http/Controllers/QrCodeController.php',
+    'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
+    'App\\Http\\Controllers\\UsersController' => $baseDir . '/app/Http/Controllers/UsersController.php',
+    'App\\Jobs\\ProcessQrCodeScan' => $baseDir . '/app/Jobs/ProcessQrCodeScan.php',
+    'App\\Models\\QrCodeModel' => $baseDir . '/app/Models/QrCodeModel.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\QrCodeServiceProvider' => $baseDir . '/app/Providers/QrCodeServiceProvider.php',

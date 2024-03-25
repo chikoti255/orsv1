@@ -129,7 +129,7 @@ return [
         App\Providers\QrCodeServiceProvider::class,
     ],*/
     'aliases' => [
-    	'QrCodeFacade' => SimpleSoftwareIO\QrCode\Facades\QrCode::class
+    	'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class
     ],
 
 ];
