@@ -1,29 +1,24 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\QrCodeController;
-use App\Http\Controllers\UserController;
-
-
 
 Route::get('/', function () {
     return view('home');
 });
 
-/*Route::get('/register', function () {
-    return view('register');
-});
-Route::post('/register', function() {
-  return view('register');
-});*/
-
 Route::get('/scanner', function() {
   return view('scanner.scanner');
 });
 
-/*Route::prefix('qr-code')->group(function() {
-    Route::post('/generate', [QrCodeController::class, 'generate']);
-    Route::get('/showQrCode/{qrCodeId}', [QrCodeController::class, 'showQrCode']);
-});*/
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('users', UserController::class);
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

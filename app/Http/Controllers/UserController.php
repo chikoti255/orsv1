@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Controllers\QrCodeController;
+//use App\Http\Middleware\GenerateSafeSubmitToken;
 
 
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    /*public function __construct() {
+        $this->middleware(GenerateSafeSubmitToken::class)->only(['create','store']);
+    }*/
+
     public function index()
     {
         //
@@ -21,25 +23,28 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+     //#[Middleware(GenerateSafeSubmitToken::class)]
     public function create()
     {
-        session()->put('token', $token = 'abc');
+        //the token was first generated here
+            //session()->put('token', $token = 'abc');
+        $token= session()->get('custom_token');
 
         return view('register', [
-            'token' => $token
+            'custom_token' => $token
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
+     //#[Middleware(GenerateSafeSubmitToken::class)]
     public function store(Request $request)
     {
-        if($request->token != session()->get('token')) {
+        /*if($request->token != session()->get('token')) {
             abort(419);
         }
-
-        session()->put('token', 'def');
+        session()->put('token', 'def');*/
 
         $request->validate([
             'first_name' => 'required|string|max:255',
@@ -58,13 +63,24 @@ class UserController extends Controller
 
         $user->save();
 
+        if($user) {
+          $formSubmitSuccess= true;
+        } else {
+          $formSubmitSuccess= false;
+        }
+
 
         $qrCodeController= new QrCodeController(); //qrCode controller instance
         $qrCode= $qrCodeController->generate($user,$request);
 
         $qrCodeImage= $qrCode->getContent();
 
-        return view('qrCode.show', ['qr_code_image' => $qrCodeImage])->with('success', 'user registered successfully');
+        //return view('qrCode.show', ['qr_code_image' => $qrCodeImage])->with('success', 'user registered successfully');
+        if($formSubmitSuccess) {
+            return redirect('/users');
+        } else {
+          return back()->withErrors(errors());
+        }
     }
 
     /**

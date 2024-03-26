@@ -45,14 +45,14 @@
 </style>
 
 </head>
-<body> 
+<body>
     <div class="hero-image">
         <div class="hero-text">
             <h1 style="font-size:50px">The 14th East African Communication Association (EACA)</h1>
             <h3>Conference 2024</h3>
-            <button class="button button4">Click Here to Register</button>
+            <a href="{{ route('register') }}" class="button button4" >Click Here to Register</a>
         </div>
-    </div>  
+    </div>
 </body>
 </html>
 </x-layout>
