@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QrCodeController;
 
 Route::get('/', function () {
     return view('home');
@@ -10,6 +11,8 @@ Route::get('/', function () {
 Route::get('/scanner', function() {
   return view('scanner.scanner');
 });
+
+Route::get('/qr-code', [QrCodeController::class, 'show'])->name('qr-code.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

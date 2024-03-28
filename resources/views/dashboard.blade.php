@@ -10,6 +10,10 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!, Qr code will display below here") }}
+
+                    <div>
+                        <img src="{{ route('qr-code.show') }}" alt="QR Code" />
+                    </div>
                 </div>
             </div>
         </div>

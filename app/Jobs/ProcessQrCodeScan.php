@@ -32,7 +32,7 @@ class ProcessQrCodeScan implements ShouldQueue
         $qrCode = QrCode::where('qr_code', $this->qrCodeString);
         //qrcode column matches unique string from the job_constructor
 
-        i($qrCode) {
+        if($qrCode) {
           //if the qrcode is found retrive it with associated user
           $user= $qrCode->user; //belongs to relationship
 

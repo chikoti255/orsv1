@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Http\Controllers\QrCodeController;
 
 class RegisteredUserController extends Controller
 {
@@ -49,8 +50,14 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
+        $qrCodeController= new QrCodeController(); //qrCode controller instance
+        $qrCode= $qrCodeController->generate($user,$request);
+
+        $qrCodeImage= $qrCode->getContent();
+
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        //return redirect(route('dashboard', absolute: false));
+        return redirect()->route('dashboard', ['qr_code_image' => $qrCodeImage]);
     }
 }

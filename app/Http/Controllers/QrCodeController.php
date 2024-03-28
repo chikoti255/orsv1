@@ -7,6 +7,9 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Models\User;
 use App\Models\QrCodeModel;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
+use App\Jobs\ProcessQrCodeScan;
+
 
 
 class QrCodeController extends Controller
@@ -19,8 +22,12 @@ class QrCodeController extends Controller
         //for the unique qrcode string to differentiate the qrcodes
         $qrCodeString= uniqid('qr_');
 
+          //concatenation of data into one string later for explode method
+          $data= "$userId|$userEmail|$qrCodeString";
+
         $qrCode= QrCode::format('png')->size(250)
-                  ->generate($qrCodeString);
+                  ->generate($data);
+
         $qrData = [
           'user_id' => $userId,
           'qr_code' => $qrCodeString, //unique qrCode id
@@ -28,30 +35,26 @@ class QrCodeController extends Controller
           'email' => $userEmail,
         ];
 
+
         $qrCodeModel= new QrCodeModel($qrData);
         $qrCodeModel->save();
 
         //dispatch the qrcode processing from the normal flow
         ProcessQrCodeScan::dispatch($qrCodeString);
 
-        /*return response()->json([
-            'qrCodeString' => $qrCodeString,
-            'qrData' => $qrData,
-            'qrCodeId' => $qrCode->id,
-            'qr_code_image' => $qrcode,
-        ]);*/
 
-        return response($qrCode)->header(
+        return Response::make($qrCode)->header(
           'Content-Type', 'img/png');
 
     }
 
-    /*public function showQrCode($qrCodeId) {
-          $qrCode = QrCode::findOrFail($qrCodeId);
-          $qr_code_image= $qrCode->qr_code_image;
+    public function show() {
+        $user= Auth::user();
 
+        $qr= QrCodeModel::where('user_id', $user->id)->firstOrFail();
 
-        return view('qrCode', ['qr_code_image' => $qr_code_image]);
-    }*/
+        //returning qr code image in response
+        return Response::make($qr->qr_code_image)->header('Content-Type', 'image/png');
+    }
 
 }
