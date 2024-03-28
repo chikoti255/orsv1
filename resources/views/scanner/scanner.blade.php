@@ -7,7 +7,26 @@
     <title>Scanner</title>
     <style>
 
-</style>
+        body {
+          font-family: sans-serif;
+        }
+        #reader {
+          width: 99vw;
+          height: 82vh;
+        }
+        #result {
+          font-weight: bold;
+          margin-top: 20px;
+        }
+        h2 {
+          border: 0px solid black;
+          background: #5cb85c;
+          padding: 5px;
+          border-radius: 10px;
+          display: inline;
+          margin-top: 20px;
+        }
+    </style>
 
 </head>
 <body>
@@ -17,6 +36,7 @@
           </div>
 
           <div id="result"></div>
+          <audio id="scan-sound" src="{{ asset('sounds/scanner_sound.mp3') }}" preload="auto"></audio>
       </div>
       <script src="{{ asset('js/html5-qrcode.min.js') }}"></script>
     <script src="{{ asset('js/scanner.js') }}"></script>
