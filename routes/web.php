@@ -14,6 +14,10 @@ Route::get('/scanner', function() {
 
 Route::get('/qr-code', [QrCodeController::class, 'show'])->name('qr-code.show');
 
+Route::get('/myQr', function() {
+  return view('qrCode.show');
+})->middleware(['auth', 'verified'])->name('myQr');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

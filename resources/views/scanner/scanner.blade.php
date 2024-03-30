@@ -10,10 +10,10 @@
         body {
           font-family: sans-serif;
         }
-        #reader {
+      /*#reader {
           width: 99vw;
           height: 82vh;
-        }
+        }*/
         #result {
           font-weight: bold;
           margin-top: 20px;
