@@ -20,6 +20,10 @@
                     <x-nav-link :href="route('myQr')" :active="request()->routeIs('myQr')">
                         {{ __('My Qr') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('attendee.registered')" :active="request()->routeIs('attendee.registered')">
+                        {{ __('Attendee') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -78,6 +82,10 @@
 
             <x-responsive-nav-link :href="route('myQr')" :active="request()->routeIs('myQr')">
                 {{ __('My Qr') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('attendee.registered')" :active="request()->routeIs('attendee.registered')">
+                {{ __('Attendee') }}
             </x-responsive-nav-link>
         </div>
 

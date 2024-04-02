@@ -1,6 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<x-app-layout>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,21 +8,43 @@
         body {
           font-family: sans-serif;
         }
-      /*#reader {
-          width: 99vw;
-          height: 82vh;
-        }*/
+
         #result {
           font-weight: bold;
           margin-top: 20px;
         }
-        h2 {
+        .success-message{
           border: 0px solid black;
           background: #5cb85c;
           padding: 5px;
           border-radius: 10px;
           display: inline;
           margin-top: 20px;
+          position: fixed;
+          transform: translateY(-70px);
+          left: 43%;
+          color: white;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 0.6em;
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        #tick {
+          display: none;
+          position: absolute;
+
+          left: 50%;
+          transform: translate(-50%,-40%);
+        }
+        #tick.success {
+          display: block;
         }
     </style>
 
@@ -32,8 +52,14 @@
 <body>
       <div class="scanner-container">
           <div class="box">
-              <div id="reader"></div>
+              <div id="reader" style="height: 500px;"></div>
           </div>
+
+            <!--<div id="tick" class="success">
+                <span class="material-symbols-outlined" style="font-size: 50px">
+                check_circle
+                </span>
+            </div>-->
 
           <div id="result"></div>
           <audio id="scan-sound" src="{{ asset('sounds/scanner_sound.mp3') }}" preload="auto"></audio>
@@ -54,5 +80,4 @@ console.log(`html5-qrcode library found!, ${Html5QrcodeScanner}`);
 })();
 </script>
 
-</body>
-</html>
+</x-app-layout>

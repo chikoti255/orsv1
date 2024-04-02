@@ -42,9 +42,14 @@ class QrCodeController extends Controller
         //dispatch the qrcode processing from the normal flow
         ProcessQrCodeScan::dispatch($qrCodeString);
 
+        $responseData= [
+          'qr_code_image' => $qrCode,
+          'data' => $data,
+        ];
+        $jsonResponse= json_encode($responseData);
 
-        return Response::make($qrCode)->header(
-          'Content-Type', 'img/png');
+        return Response::make($jsonResponse)->header(
+          'Content-Type', 'application/json');
 
     }
 

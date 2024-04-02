@@ -17,70 +17,41 @@ class UserController extends Controller
 
     public function index()
     {
-        //
+        $users= User::all();
+
+        return view('attendee.registered', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function attendee() {
+        return view('attendee.attendee');
+    }
+
+    public function absent() {
+      return view('attendee.absent');
+    }
+
+    public function checkedIn() {
+      return view('attendee.checkedIn');
+    }
+
+
      //#[Middleware(GenerateSafeSubmitToken::class)]
     public function create()
     {
-        //the token was first generated here
-            //session()->put('token', $token = 'abc');
+        /*the token was first generated here
+          session()->put('token', $token = 'abc');
         $token= session()->get('custom_token');
 
         return view('register', [
             'custom_token' => $token
-        ]);
+        ]);*/
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
      //#[Middleware(GenerateSafeSubmitToken::class)]
     public function store(Request $request)
     {
-        /*if($request->token != session()->get('token')) {
-            abort(419);
-        }
-        session()->put('token', 'def');*/
 
-        $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|string|unique:users,id',
-            'organization' => 'required|string|max:255',
-            'country' => 'required|string|max:255',
-        ]);
-
-        $user= new User;
-        $user->first_name = $request->input('first_name');
-        $user->last_name = $request->input('last_name');
-        $user->email= $request->input('email');
-        $user->organization= $request->input('organization');
-        $user->country= $request->input('country');
-
-        $user->save();
-
-        if($user) {
-          $formSubmitSuccess= true;
-        } else {
-          $formSubmitSuccess= false;
-        }
-
-
-        $qrCodeController= new QrCodeController(); //qrCode controller instance
-        $qrCode= $qrCodeController->generate($user,$request);
-
-        $qrCodeImage= $qrCode->getContent();
-
-        //return view('qrCode.show', ['qr_code_image' => $qrCodeImage])->with('success', 'user registered successfully');
-        if($formSubmitSuccess) {
-            return redirect('/users');
-        } else {
-          return back()->withErrors(errors());
-        }
     }
 
     /**

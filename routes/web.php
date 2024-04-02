@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QrCodeController;
+use App\Http\Controllers\UserController;
+
 
 Route::get('/', function () {
     return view('home');
@@ -17,6 +19,16 @@ Route::get('/qr-code', [QrCodeController::class, 'show'])->name('qr-code.show');
 Route::get('/myQr', function() {
   return view('qrCode.show');
 })->middleware(['auth', 'verified'])->name('myQr');
+
+Route::middleware('auth')->group(function() {
+  Route::get('/attendee', [UserController::class, 'attendee'])->name('attendee.attendee');
+
+  Route::prefix('/attendee')->group(function() {
+    Route::get('/registered', [UserController::class, 'index'])->name('attendee.registered');
+    Route::get('/checkedIn', [UserController::class, 'checkedIn'])->name('attendee.checkedIn');
+    Route::get('/absent', [UserController::class, 'absent'])->name('attendee.absent');
+  });
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

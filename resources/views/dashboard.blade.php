@@ -22,6 +22,9 @@
         .button {
           background-color: green;
         }
+
+
+
     </style>
 
     <div class="py-4">
@@ -81,7 +84,7 @@
             </div>
 
             <div class="flex justify-between px-4 mt-4">
-                  <button class="button text-white py-2 px-4 rounded-md">View Users</button>
+
                   <button class="button text-white py-2 px-4 rounded-md">Scan QR</button>
             </div>
 
