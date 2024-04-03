@@ -14,7 +14,12 @@ Route::get('/scanner', function() {
   return view('scanner.scanner');
 });
 
-Route::get('/qr-code', [QrCodeController::class, 'show'])->name('qr-code.show');
+
+
+Route::middleware('auth')->group(function() {
+    Route::post('/handleScanned', [QrCodeController::class, 'handleScannedData'])->name('handleScanned');
+    Route::get('/qr-code', [QrCodeController::class, 'show'])->name('qr-code.show');
+});
 
 Route::get('/myQr', function() {
   return view('qrCode.show');

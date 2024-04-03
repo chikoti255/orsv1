@@ -2,15 +2,21 @@
   <div class="mt-3 px-3">
           <div class="flex justify-between">
                 <x-nav-link :href="route('attendee.registered')" :active="request()->routeIs('attendee.registered')">
-                    {{ __('All') }}
+                      <span class="material-symbols-outlined">
+                      sort
+                      </span>{{ __('All') }}
                 </x-nav-link>
 
                 <x-nav-link :href="route('attendee.checkedIn')" :active="request()->routeIs('attendee.checkedIn')">
-                    {{ __('Checked In') }}
+                      <span class="material-symbols-outlined">
+                      fact_check
+                      </span>{{ __('Checked In') }}
                 </x-nav-link>
 
                 <x-nav-link :href="route('attendee.absent')" :active="request()->routeIs('attendee.absent')">
-                    {{ __('Absent') }}
+                        <span class="material-symbols-outlined">
+                        problem
+                        </span>{{ __('Absent') }}
                 </x-nav-link>
         </div>
 

@@ -16,11 +16,11 @@
         .progress {
           width: 100%;
           height: 100%;
-          background-color: #4CAF50;
+          background-color: #cccccc;
           border-radius: 4px;
         }
         .button {
-          background-color: green;
+          background-color: #3399cc;
         }
 
 
@@ -33,17 +33,35 @@
                 <div class="p-6 text-gray-900">
 
                         <div class="flex justify-between space-x-4">
-                              <div class="flex flex-col justify-center items-center border p-4">
-                                    <p>125</p>
-                                    <p>Registered</p>
+                              <div style="color: white; background-color: #3399cc; font-weight: bold; border-radius: 7px;" class="flex flex-row justify-center items-center border p-4">
+                                    <div>
+                                        <span class="material-symbols-outlined">
+                                        app_registration</span>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                        <p>125</p>
+                                        <p>Registered</p>
+                                    </div>
                               </div>
-                              <div class="flex flex-col justify-center items-center border p-4">
-                                    <p>23</p>
-                                    <p>Checked In</p>
+                              <div style="color: white; background-color: #3399cc; font-weight: bold; border-radius: 7px;" class="flex flex-row justify-center items-center border p-4">
+                                    <div>
+                                          <span class="material-symbols-outlined">
+                                            select_check_box</span>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                            <p>23</p>
+                                            <p>Checked In</p>
+                                    </div>
                               </div>
-                              <div class="flex flex-col justify-center items-center border p-4">
-                                    <p>158</p>
-                                    <p>Absent</p>
+                              <div style="color: white; background-color: #3399cc; font-weight: bold; border-radius: 7px;" class="flex flex-row justify-center items-center border p-4">
+                                    <div>
+                                          <span class="material-symbols-outlined">
+                                            event_busy</span>
+                                    </div>
+                                    <div class="flex flex-col items-center">
+                                          <p>158</p>
+                                          <p>Absent</p>
+                                    </div>
                               </div>
                         </div>
                 </div>

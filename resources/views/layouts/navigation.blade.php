@@ -14,15 +14,21 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                            <span class="material-symbols-outlined">
+                                dashboard
+                              </span>{{ __('Dashboard') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('myQr')" :active="request()->routeIs('myQr')">
-                        {{ __('My Qr') }}
+                            <span class="material-symbols-outlined">
+                                  qr_code_2
+                              </span>{{ __('My Qr') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('attendee.registered')" :active="request()->routeIs('attendee.registered')">
-                        {{ __('Attendee') }}
+                              <span class="material-symbols-outlined">
+                              checklist_rtl
+                              </span>{{ __('Attendee') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -31,8 +37,10 @@
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->first_name }}</div>
+                        <button style="border: 0px solid black; padding: 4px; border-radius: 5px; background-color: #3399cc; color: white;" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                            <div>
+                                        {{ Auth::user()->first_name }}
+                              </div>
 
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -44,7 +52,9 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                                <span class="material-symbols-outlined">
+                                account_circle
+                                </span>{{ __('Profile') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -54,7 +64,9 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                          <span class="material-symbols-outlined">
+                                          logout
+                                          </span>{{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -77,15 +89,31 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                    <div class="flex flex-row items-center">
+                          <p><span class="material-symbols-outlined">
+                              dashboard
+                            </span></p>
+                          <p>
+                          {{ __('Dashboard') }}</p>
+                    </div>
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('myQr')" :active="request()->routeIs('myQr')">
-                {{ __('My Qr') }}
+                    <div class="flex flex-row items-center">
+                          <p><span class="material-symbols-outlined">
+                                qr_code_2
+                          </span></p>
+                          <p>{{ __('My Qr') }}</p>
+                    </div>
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('attendee.registered')" :active="request()->routeIs('attendee.registered')">
-                {{ __('Attendee') }}
+                      <div class="flex flex-row items-center">
+                            <p><span class="material-symbols-outlined">
+                            checklist_rtl
+                            </span></p>
+                            <p>{{ __('Attendee') }}</p>
+                      </div>
             </x-responsive-nav-link>
         </div>
 
@@ -98,7 +126,11 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                        <div class="flex flex-row items-center">
+                              <p><span class="material-symbols-outlined">
+                                account_circle</span><p>
+                              <p>{{ __('Profile') }}</p>
+                        </div>
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -108,7 +140,12 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                                    <div class="flex flex-row items-center">
+                                          <p><span class="material-symbols-outlined">
+                                          logout
+                                          </span></p>
+                                          <p>{{ __('Log Out') }}</p>
+                                    </div>
                     </x-responsive-nav-link>
                 </form>
             </div>
