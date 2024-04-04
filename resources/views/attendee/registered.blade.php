@@ -59,6 +59,18 @@
 
   </style>
 
+  <div class="relative mt-3">
+
+      <form method="get" action="{{ route('attendee.registered') }}">
+            <div class="inline-flex rounded-md shadow-sm" role="group">
+              <input name="search" type="text" value="{{ isset($search) ? $search : '' }}" placeholder="Search by name or email" class="w-full pl-10 pr-4 py-2 border border-gray-300 focus:outline-none focus:border-indigo-500 sm:rounded-lg">
+                    <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" type="submit">Search</button>
+            </div>
+      </form>
+
+
+  </div>
+
 <div class="mt-4">
       @foreach($users as $user)
     <div class="all">

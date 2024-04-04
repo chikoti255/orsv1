@@ -33,10 +33,11 @@ const scanner= new Html5QrcodeScanner('reader', {
 
                 const scanSound= document.getElementById('scan-sound');
 
-                  /*scanSound.play();
-                setTimeout(() => {
+                  scanSound.play();
+
+                  setTimeout(() => {
                   resultContainer.style.display= "none";
-                }, 3000);*/
+                }, 5000);
 
                 onScanned(`${result}`);
 

@@ -15,11 +15,18 @@ class UserController extends Controller
         $this->middleware(GenerateSafeSubmitToken::class)->only(['create','store']);
     }*/
 
-    public function index()
+    public function index(Request $request)
     {
-        $users= User::all();
-
-        return view('attendee.registered', compact('users'));
+        $search= $request->search;
+        //$users= User::all();
+        $users = User::where(function($query) use ($search) {
+            $query->where('first_name', 'like', "%$search%")
+                  ->orWhere('last_name', 'like', "%$search%")
+                  ->orWhere('email', 'like', "%$search%") // Include searching by email
+                  ->orWhere('organization', 'like', "%$search%"); // Include searching by organization
+        })
+        ->get();
+        return view('attendee.registered', compact('users','search'));
     }
 
     public function attendee() {

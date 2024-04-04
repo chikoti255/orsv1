@@ -41,7 +41,8 @@
           position: absolute;
 
           left: 50%;
-          transform: translate(-50%,-40%);
+          /*transform: translate(-50%,-40%);*/
+          transform: translate(-50%, 20%);
         }
         #tick.success {
           display: block;

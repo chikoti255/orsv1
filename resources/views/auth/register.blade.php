@@ -3,24 +3,50 @@
     body {
         margin: 0;
         padding: 0;
+        outline: 0;
         font-family: Arial, sans-serif;
+
+        overflow: hidden;
+    }
+    .background-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
         background-image: url('/images/library2.jpeg'); /* Replace 'background-image.jpg' with the path to your image */
         background-size: cover;
         background-position: center;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        animation: image-zoom 30s infinite alternate;
+    }
+    @keyframes image-zoom {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
     }
     .container {
         /*opacity: 0;*/
+        position: relative;
+      
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 400px;
+        margin: auto;
         transition: opacity 0.5s ease-in-out;
         background: rgba(255, 255, 255, 0.8);
         padding: 30px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         max-width: 400px;
-        width: 100%;
+        width: 90%;
     }
 
     h2 {
@@ -39,6 +65,8 @@
     }
 
     </style>
+
+      <div class="background-container"></div>
         <div class="container" id="registrationContainer">
                 <h2>Registration Form</h2>
 

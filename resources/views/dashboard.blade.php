@@ -19,8 +19,10 @@
           background-color: #cccccc;
           border-radius: 4px;
         }
-        .button {
+        a.scan-button {
           background-color: #3399cc;
+          cursor: pointer;
+          text-decoration: none;
         }
 
 
@@ -103,7 +105,9 @@
 
             <div class="flex justify-between px-4 mt-4">
 
-                  <button class="button text-white py-2 px-4 rounded-md">Scan QR</button>
+                  <a href="{{ route('scanner') }}" class="scan-button text-white py-2 px-4 rounded-md"><span class="material-symbols-outlined">
+                    qr_code_scanner
+                    </span>Scan QR</a>
             </div>
 
         </div>

@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\QrCodeModel;
+
 
 class User extends Authenticatable
 {
@@ -24,6 +26,10 @@ class User extends Authenticatable
         'email',
       'organization','country',
     ];
+
+    public function qrcode() {
+      $this->hasOne(QrCodeModel::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
