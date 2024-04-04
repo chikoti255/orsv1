@@ -8,4 +8,5 @@ to do list:
 5. add menu for admin to assign rooms for each member to certain room
 6. users displayed on dashboard should show details of room assigned, organization and status in tabular
 7. user registration error: You need to install the imagick extension to use this backend
+8. normal user after login (no need for password, just email) they should see their qr code and room assigned
    
