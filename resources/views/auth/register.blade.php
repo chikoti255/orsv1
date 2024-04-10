@@ -5,7 +5,10 @@
         padding: 0;
         outline: 0;
         font-family: Arial, sans-serif;
-
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         overflow: hidden;
     }
     .background-container {
@@ -34,7 +37,7 @@
     .container {
         /*opacity: 0;*/
         position: relative;
-      
+
         display: flex;
         flex-direction: column;
         align-items: center;

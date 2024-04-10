@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use App\Http\Middleware\GenerateSafeSubmitToken;
+use App\Http\Middleware\Admin;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -16,7 +17,9 @@ return Application::configure(basePath: dirname(__DIR__))
           'multiple_submissions' => GenerateSafeSubmitToken::class
         ]);*/
       //  $middleware->append(GenerateSafeSubmitToken::class);
-
+      $middleware->alias([
+        'admin' => Admin::class
+    ]);
 
     })
     ->withExceptions(function (Exceptions $exceptions) {

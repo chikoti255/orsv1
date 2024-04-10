@@ -50,7 +50,7 @@
         <div class="hero-text">
             <h1 style="font-size:50px">The 14th East African Communication Association (EACA)</h1>
             <h3>Conference 2024</h3>
-            <a href="{{ route('register') }}" class="button button4" >Click Here to Register</a>
+            <a href="{{ route('register') }}" class="button button4" >Get Started</a>
         </div>
     </div>
 </body>

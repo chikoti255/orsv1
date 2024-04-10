@@ -4,9 +4,7 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-image: url('/images/library2.jpeg'); /* Replace 'background-image.jpg' with the path to your image */
-      background-size: cover;
-      background-position: center;
+
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -37,12 +35,37 @@
       border: 1px solid #ccc;
       border-radius: 5px;
   }
+  .background-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-image: url('/images/library2.jpeg'); /* Replace 'background-image.jpg' with the path to your image */
+      background-size: cover;
+      background-position: center;
+      animation: image-zoom 30s infinite alternate;
+  }
+  @keyframes image-zoom {
+      0% {
+          transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+      }
+  }
 
   </style>
 
 
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
+
+      <div class="background-container"></div>
       <div class="container">
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -75,9 +98,11 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
+              <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
+                  {{ __('Not registered?') }}
+              </a>
 
-
-                <x-primary-button class="ms-3">
+                <x-primary-button style="background-color: #3399cc" class="ms-3">
                     {{ __('Log in') }}
                 </x-primary-button>
             </div>
