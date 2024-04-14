@@ -17,16 +17,17 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $search= $request->search;
-        //$users= User::all();
-        $users = User::where(function($query) use ($search) {
+        //$search= $request->search;
+        $users= User::all();
+        /*$users = User::where(function($query) use ($search) {
             $query->where('first_name', 'like', "%$search%")
                   ->orWhere('last_name', 'like', "%$search%")
                   ->orWhere('email', 'like', "%$search%") // Include searching by email
                   ->orWhere('organization', 'like', "%$search%"); // Include searching by organization
         })
-        ->get();
-        return view('attendee.registered', compact('users','search'));
+        ->get();*/
+
+        return view('attendee.registered', compact('users'));
     }
 
     public function attendee() {

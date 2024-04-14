@@ -13,7 +13,7 @@
           font-weight: bold;
           margin-top: 20px;
         }
-        .success-message{
+        /*.success-message{
           border: 0px solid black;
           background: #5cb85c;
           padding: 5px;
@@ -46,7 +46,7 @@
         }
         #tick.success {
           display: block;
-        }
+        }*/
     </style>
 
 </head>
@@ -67,6 +67,7 @@
       </div>
       <script src="{{ asset('js/html5-qrcode.min.js') }}"></script>
     <script src="{{ asset('js/scanner.js') }}"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
 (function() {

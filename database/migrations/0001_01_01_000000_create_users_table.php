@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('organization');
             $table->string('country');
             $table->timestamp('email_verified_at')->nullable();
-
+            $table->string('status')->default('registered')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

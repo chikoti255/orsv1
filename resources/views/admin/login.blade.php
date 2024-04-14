@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     @php
         use Illuminate\Support\Facades\Session;
@@ -82,11 +83,20 @@
                  <h2 class="text-center text-xl mb-6">Please Sign in to continue</h2>
 
                  @if(Session::has('admin_login_error'))
-                 <div class="alert alert-warning" role="alert">
-                        <span><i class="bi bi-exclamation-triangle"></i></span>
-                      <strong>{{ session::get('admin_login_error') }}</strong>
-                </div>
+                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <span><i class="bi bi-exclamation-triangle"></i></span>
+                              <strong>{{ session::get('admin_login_error') }}</strong>
+                                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                @elseif(Session::has('admin_login_failed'))
+                          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                 <span><i class="bi bi-exclamation-triangle"></i></span>
+                               <strong>{{ session::get('admin_login_failed') }}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                         </div>
                  @endif
+
 
 
              <form method="POST" action="{{ route('admin.login.submit') }}" class="mb-4">

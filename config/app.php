@@ -126,7 +126,8 @@ return [
     ],
 
     /*'providers' => [
-        App\Providers\QrCodeServiceProvider::class,
+      //  App\Providers\QrCodeServiceProvider::class,
+          Spatie\Permission\PermissionServiceProvider::class,
     ],*/
     'aliases' => [
     	'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class

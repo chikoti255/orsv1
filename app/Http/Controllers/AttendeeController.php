@@ -20,5 +20,7 @@ class AttendeeController extends Controller
             return view('attendee.attendee', compact('search', 'attendees'));
         }
 
-    }
+
+
+
 }

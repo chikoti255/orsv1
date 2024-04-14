@@ -26,7 +26,7 @@ Route::get('/myQr', function() {
   return view('qrCode.show');
 })->middleware(['auth', 'verified'])->name('myQr');
 
-Route::middleware('auth')->group(function() {
+Route::middleware('admin')->group(function() {
   Route::get('/attendee', [UserController::class, 'attendee'])->name('attendee.attendee');
 
   Route::prefix('/attendee')->group(function() {
