@@ -1,5 +1,4 @@
-
-const scanner= new Html5QrcodeScanner('reader', {
+const scanner = new Html5QrcodeScanner('reader', {
   qrbox: {
     width: 250,
     height: 250,
@@ -7,170 +6,79 @@ const scanner= new Html5QrcodeScanner('reader', {
   fps: 120,
 });
 
-const scannedCode= null;
+const scannedCode = null;
+const scanSound = document.getElementById('scan-sound');
 
-const scanSound= document.getElementById('scan-sound');
+scanner.render(success, error);
 
-  scanner.render(success, error);
-
-
-const observer= new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting && entry.target == Swal.getContainer()) {
-                console.log("SweetAlert is visible");
-                return;
-            }
-        });
-const scanner= new Html5QrcodeScanner('reader', {
-  qrbox: {
-    width: 250,
-    height: 250,
-  },
-  fps: 120,
-});
-
-const scannedCode= null;
-
-const scanSound= document.getElementById('scan-sound');
-
-  scanner.render(success, error);
-
-
-const observer= new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting && entry.target == Swal.getContainer()) {
-                console.log("SweetAlert is visible");
-                return;
-            }
-        });
-});
-
-      //observe sweet alert using swal getContainer
-    observer.observe(Swal.getContainer());
-
-//if the success happens
-    function success(result) {
-          const resultContainer= document.getElementById('result');
-
-          if(observer.takeRecords().some(record => record.isIntersecting)) {
-              return; // to not proceed if sweet alert is visible
-          }
-
-          if(result !== scannedCode) {
-              Swal.fire({
-                    title: "Good job!",
-                    text: "You clicked the button!",
-                    icon: "success"
-                  }).then(() => {
-                      resultContainer.innerHTML= `<p>
-                              <a href="${result}">${result}</a>
-                      </p>`;
-
-                      resultContainer.style.display= "block";
-
-                      scanSound.play();
-
-                      setTimeout(() => {
-                      resultContainer.style.display= "none";
-                    }, 5000);
-
-                  });
-          }
-          else {
-              console.log("This Qr code has already been scanned.");
-          }
-
-
-                onScanned(`${result}`);
-
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && entry.target === Swal.getContainer()) {
+      console.log("SweetAlert is visible!");
+      return; // Exit the loop if SweetAlert is visible
     }
-
-    //for the error functoin of scanner
-      function error(error) {
-        console.error(error);
-      }
-
-      function onScanned(scanned_data) {
-        fetch('/handleScanned', {
-            method: 'POST',
-            headers: {
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify({scanned_data: scanned_data})
-        })
-          .then(response => response.json())
-          .then(data => {
-                if(data.scanned_data) {
-                    const parts= data.scanned_data.original_data.split(`|`);
-
-                    console.log(data.scanned_data);
-                }
-          });
-      }
-
+  });
 });
 
-      //observe sweet alert using swal getContainer
-    observer.observe(Swal.getContainer());
+observer.observe(Swal.getContainer());
 
-//if the success happens
-    function success(result) {
-          const resultContainer= document.getElementById('result');
+function success(result) {
+  const resultContainer = document.getElementById('result');
 
-          if(observer.takeRecords().some(record => record.isIntersecting)) {
-              return; // to not proceed if sweet alert is visible
-          }
+  // Check if a previous alert is displayed (using Intersection Observer)
+  if (observer.takeRecords().some(record => record.isIntersecting)) {
+    return; // Don't proceed if SweetAlert is visible
+  }
 
-          if(result !== scannedCode) {
-              //  scannedCode = result; //updating only if its new scan
+  if (result !== scannedCode) {
 
-              Swal.fire({
-                    title: "Welcome!",
-                    text: `${result}`,
-                    icon: "success"
-                  }).then(() => {
-                      resultContainer.innerHTML= `<p>
-                              <a href="${result}">${result}</a>
-                      </p>`;
+    Swal.fire({
+      title: "Welcome!",
+      text: `${result}`,
+      icon: "success"
+    }).then(() => {
 
-                      resultContainer.style.display= "block";
+      resultContainer.innerHTML = `
+      <p>
+      <a href="${result}">${result}</a>
+      </p>`;
 
-                      scanSound.play();
+      resultContainer.style.display = "block";
 
-                      setTimeout(() => {
-                      resultContainer.style.display= "none";
-                    }, 5000);
+      scanSound.play();
 
-                  });
-          }
-          else {
-              console.log("This Qr code has already been scanned.");
-          }
+      setTimeout(() => {
+        resultContainer.style.display = "none";
+      }, 5000);
 
+    });
+  } else {
+    console.log("This QR code has already been scanned.");
+  }
 
-                onScanned(`${result}`);
+onScanned(`${result}`);
 
-    }
+}
 
-    //for the error functoin of scanner
-      function error(error) {
-        console.error(error);
+function error(error) {
+  console.error(error);
+}
+
+// Optional: For potential server-side validation
+function onScanned(scanned_data) {
+  fetch('/handleScanned', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ scanned_data: scanned_data })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.scanned_data) {
+        const parts = data.scanned_data.original_data.split('|');
+        console.log(data.scanned_data);
       }
-
-      function onScanned(scanned_data) {
-        fetch('/handleScanned', {
-            method: 'POST',
-            headers: {
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify({scanned_data: scanned_data})
-        })
-          .then(response => response.json())
-          .then(data => {
-                if(data.scanned_data) {
-                    const parts= data.scanned_data.original_data.split(`|`);
-
-                    console.log(data.scanned_data);
-                }
-          });
-      }
+    })
+    .catch(error => console.error(error)); // Handle potential fetch errors
+}
