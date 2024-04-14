@@ -2,7 +2,12 @@
     use Illuminate\Support\Facades\Auth;
     $user= Auth::user();
 @endphp
+
 <x-app-layout>
+
+
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
     <div class="container mt-2 mx-auto">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
@@ -21,4 +26,6 @@
             </div>
         </div>
     </div>
+
+
 </x-app-layout>

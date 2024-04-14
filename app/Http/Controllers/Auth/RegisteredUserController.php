@@ -58,6 +58,6 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         //return redirect(route('dashboard', absolute: false));
-        return redirect()->route('dashboard', ['qr_code_image' => $qrCodeImage]);
+        return redirect()->route('myQr', ['qr_code_image' => $qrCodeImage]);
     }
 }

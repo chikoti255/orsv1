@@ -27,7 +27,6 @@ Route::get('/myQr', function() {
 })->middleware(['auth', 'verified'])->name('myQr');
 
 Route::middleware('admin')->group(function() {
-  Route::get('/attendee', [UserController::class, 'attendee'])->name('attendee.attendee');
 
   Route::prefix('/attendee')->group(function() {
     Route::get('/registered', [UserController::class, 'index'])->name('attendee.registered');
@@ -36,9 +35,7 @@ Route::middleware('admin')->group(function() {
   });
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

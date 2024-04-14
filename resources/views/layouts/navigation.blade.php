@@ -4,6 +4,7 @@
     @php
   use Illuminate\Support\Facades\Auth;
     @endphp
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -13,23 +14,12 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            <span class="material-symbols-outlined">
-                                dashboard
-                              </span>{{ __('Dashboard') }}
-                    </x-nav-link>
 
                     <x-nav-link :href="route('myQr')" :active="request()->routeIs('myQr')">
-                            <span class="material-symbols-outlined">
-                                  qr_code_2
-                              </span>{{ __('My Qr') }}
+                            <i style="font-size: 22px;" class="uil uil-qrcode-scan"></i>{{ __('My Qr') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('attendee.registered')" :active="request()->routeIs('attendee.registered')">
-                              <span class="material-symbols-outlined">
-                              checklist_rtl
-                              </span>{{ __('Attendee') }}
-                    </x-nav-link>
+
                 </div>
             </div>
 
@@ -88,33 +78,20 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    <div class="flex flex-row items-center">
-                          <p><span class="material-symbols-outlined">
-                              dashboard
-                            </span></p>
-                          <p>
-                          {{ __('Dashboard') }}</p>
-                    </div>
-            </x-responsive-nav-link>
+
 
             <x-responsive-nav-link :href="route('myQr')" :active="request()->routeIs('myQr')">
                     <div class="flex flex-row items-center">
                           <p><span class="material-symbols-outlined">
                                 qr_code_2
                           </span></p>
-                          <p>{{ __('My Qr') }}</p>
+                          <p>
+                                <i style="font-size: 22px;" class="uil uil-qrcode-scan"></i>&nbsp{{ __('My Qr') }}
+                          </p>
                     </div>
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('attendee.registered')" :active="request()->routeIs('attendee.registered')">
-                      <div class="flex flex-row items-center">
-                            <p><span class="material-symbols-outlined">
-                            checklist_rtl
-                            </span></p>
-                            <p>{{ __('Attendee') }}</p>
-                      </div>
-            </x-responsive-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->

@@ -30,9 +30,7 @@ class UserController extends Controller
         return view('attendee.registered', compact('users'));
     }
 
-    public function attendee() {
-        return view('attendee.attendee');
-    }
+  
 
     public function absent() {
       return view('attendee.absent');

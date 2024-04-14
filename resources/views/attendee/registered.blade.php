@@ -18,6 +18,7 @@
             <th>Organization</th>
             <th>Country</th>
             <th>Status</th>
+            <th>Register date</th>
             <th>Action</th>
         </tr>
       </thead>
@@ -34,6 +35,7 @@
                         {{ $user->status }}
                     </span>
                   </td>
+                  <td>{{ $user->created_at->format('d M Y') }}</td>
                   <td style="display: flex; flex-direction: row; justify-content: space-between;">
                       <p><i style="font-size: 17px; color: blue;" class="uil uil-eye"></i></p>
                       <p><i style="font-size: 17px" class="uil uil-edit"></i></p>
@@ -50,6 +52,7 @@
           <th>Organization</th>
           <th>Country</th>
           <th>Status</th>
+          <th>Register date</th>
           <th>Action</th>
         </tr>
     </tfoot>
