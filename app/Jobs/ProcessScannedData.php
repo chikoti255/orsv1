@@ -17,31 +17,38 @@ class ProcessScannedData implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct()
+
+     protected $scannedData;
+
+    public function __construct($scannedData)
     {
-        //
+        $this->scannedData = $scannedData;
     }
 
     /**
      * Execute the job.
      */
-    public function handle($data): void
+    public function handle(): void
     {
-        $parts= explode('|', $data);
+        try {
+          $parts= explode('|', $this->scannedData);
 
-        $part0= $parts[0];
-        $part1= $parts[1];
-        $part2= $parts[2];
+          $userId= $parts[0]; //userid
+          $email= $parts[1]; //email
+          $qrcodeString= $parts[2]; //qrcodestring
 
-        $scannedData = [
-            'userId' => $part0,
-            'email' => $part1,
-            'qrCodeString' => $part2,
-        ];
 
-        $scans = new Scans($scannedData);
-            $scans->save();
+          $scans = new Scans;
 
-        \Log::info($scannedData);
+          $scans->qr_code_string= $qrcodeString;
+          $scans->user_id= $userId;
+          $scans->save();
+
+        }
+        catch (\Exception $e) {
+            // Handle any exceptions here
+            \Log::error('Error processing scanned data: ' . $e->getMessage());
+        }
+
     }
 }

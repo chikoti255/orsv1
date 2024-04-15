@@ -66,10 +66,15 @@ function error(error) {
 
 // Optional: For potential server-side validation
 function onScanned(scanned_data) {
+
+  const csrfToken = document.head.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
   fetch('/handleScanned', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'X-CSRF-TOKEN': csrfToken // Include CSRF token in the request headers
+
     },
     body: JSON.stringify({ scanned_data: scanned_data })
   })

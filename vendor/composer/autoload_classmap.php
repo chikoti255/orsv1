@@ -15,6 +15,7 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\ProfileController' => $baseDir . '/app/Http/Controllers/ProfileController.php',
     'App\\Http\\Controllers\\QrCodeController' => $baseDir . '/app/Http/Controllers/QrCodeController.php',
+    'App\\Http\\Controllers\\ScansController' => $baseDir . '/app/Http/Controllers/ScansController.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
     'App\\Http\\Controllers\\admin\\LoginController' => $baseDir . '/app/Http/Controllers/admin/LoginController.php',
     'App\\Http\\Middleware\\Admin' => $baseDir . '/app/Http/Middleware/Admin.php',

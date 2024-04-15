@@ -63,21 +63,6 @@ class QrCodeController extends Controller
         return Response::make($qr->qr_code_image)->header('Content-Type', 'image/png');
     }
 
-    public function handleScannedData(User $user, Request $request) {
-          if(isset($request->scanned_data)) {
-              $scannedData= $request->input('scanned_data');
 
-              //then dispatch the job of the process qr code
-              ProcessScannedData::dispatch($scannedData);
-
-              return response()->json([
-                  'message' => 'Scanned Data Processed in the background'
-              ]);
-          }
-
-          return response()->json([
-              'message' => 'No scanned Data Received'
-          ], 400);
-    }
 
 }
