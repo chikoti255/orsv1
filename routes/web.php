@@ -6,7 +6,6 @@ use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AttendeeController;
 use App\Http\Controllers\ScansController;
-use App\Http\Controllers\MailController;
 
 
 Route::get('/', function () {

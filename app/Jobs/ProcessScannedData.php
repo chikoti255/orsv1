@@ -46,7 +46,7 @@ class ProcessScannedData implements ShouldQueue
           $scans->user_id= $userId;
           $scans->save();
 
-        
+
 
         }
         catch (\Exception $e) {
