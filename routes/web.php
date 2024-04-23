@@ -5,20 +5,24 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AttendeeController;
+use App\Http\Controllers\ScansController;
+use App\Http\Controllers\MailController;
 
 
 Route::get('/', function () {
     return view('home');
 });
 
+
 Route::get('/scanner', function() {
   return view('scanner.scanner');
 })->name('scanner');
 
 
+Route::post('/handleScanned', [ScansController::class, 'handleScannedData'])->name('handleScanned');
 
 Route::middleware('auth')->group(function() {
-    Route::post('/handleScanned', [QrCodeController::class, 'handleScannedData'])->name('handleScanned');
+
     Route::get('/qr-code', [QrCodeController::class, 'show'])->name('qr-code.show');
 });
 

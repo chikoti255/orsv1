@@ -41,6 +41,7 @@ return [
             'queue' => env('DB_QUEUE', 'default'),
             'retry_after' => env('DB_QUEUE_RETRY_AFTER', 90),
             'after_commit' => false,
+          
         ],
 
         'beanstalkd' => [
@@ -71,6 +72,11 @@ return [
             'block_for' => null,
             'after_commit' => false,
         ],
+        'signup_email' => [
+              'driver' => 'database',
+              'connection' => 'database',
+              'queue' => 'signup_email',
+        ],
 
     ],
 
@@ -86,7 +92,7 @@ return [
     */
 
     'batching' => [
-        'database' => env('DB_CONNECTION', 'sqlite'),
+        'database' => env('DB_CONNECTION', 'mysql'),
         'table' => 'job_batches',
     ],
 

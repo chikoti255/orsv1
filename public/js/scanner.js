@@ -7,6 +7,9 @@ const scanner = new Html5QrcodeScanner('reader', {
 });
 
 const scannedCode = null;
+
+let firstScan= true;
+
 const scanSound = document.getElementById('scan-sound');
 
 scanner.render(success, error);
@@ -30,8 +33,10 @@ function success(result) {
     return; // Don't proceed if SweetAlert is visible
   }
 
-  if (result !== scannedCode) {
+  if (firstScan && result !== scannedCode) {
 
+      firstScan = false;
+      
     Swal.fire({
       title: "Welcome!",
       text: `${result}`,
@@ -62,14 +67,20 @@ onScanned(`${result}`);
 
 function error(error) {
   console.error(error);
+
 }
 
 // Optional: For potential server-side validation
 function onScanned(scanned_data) {
+
+  const csrfToken = document.head.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
   fetch('/handleScanned', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'X-CSRF-TOKEN': csrfToken // Include CSRF token in the request headers
+
     },
     body: JSON.stringify({ scanned_data: scanned_data })
   })
@@ -80,5 +91,13 @@ function onScanned(scanned_data) {
         console.log(data.scanned_data);
       }
     })
-    .catch(error => console.error(error)); // Handle potential fetch errors
+    .catch(error => {
+        console.error(error);
+
+        Swal.fire({
+          title: 'Error!',
+          text: 'Sorry, Qr code is already scanned.',
+          icon: 'error'
+        });
+    });
 }

@@ -13,6 +13,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Http\Controllers\QrCodeController;
 
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -56,6 +57,8 @@ class RegisteredUserController extends Controller
         $qrCodeImage= $qrCode->getContent();
 
         Auth::login($user);
+
+
 
         //return redirect(route('dashboard', absolute: false));
         return redirect()->route('myQr', ['qr_code_image' => $qrCodeImage]);

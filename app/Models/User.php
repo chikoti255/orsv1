@@ -28,7 +28,11 @@ class User extends Authenticatable
     ];
 
     public function qrcode() {
-      $this->hasOne(QrCodeModel::class);
+      return $this->hasOne(QrCodeModel::class);
+    }
+
+    public function scans() {
+      return $this->hasMany(Scans::class);
     }
 
     /**
@@ -36,10 +40,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-  /*  protected $hidden = [
-        'password',
-        'remember_token',
-    ];*/
+
 
     /**
      * Get the attributes that should be cast.

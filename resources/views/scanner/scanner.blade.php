@@ -1,6 +1,8 @@
-<x-app-layout>
+<html>
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scanner</title>
     <style>
@@ -13,40 +15,7 @@
           font-weight: bold;
           margin-top: 20px;
         }
-        /*.success-message{
-          border: 0px solid black;
-          background: #5cb85c;
-          padding: 5px;
-          border-radius: 10px;
-          display: inline;
-          margin-top: 20px;
-          position: fixed;
-          transform: translateY(-70px);
-          left: 43%;
-          color: white;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          gap: 0.6em;
-        }
-        .material-symbols-outlined {
-          font-variation-settings:
-          'FILL' 0,
-          'wght' 400,
-          'GRAD' 0,
-          'opsz' 24
-        }
-        #tick {
-          display: none;
-          position: absolute;
 
-          left: 50%;
-          /*transform: translate(-50%,-40%);*/
-          transform: translate(-50%, 20%);
-        }
-        #tick.success {
-          display: block;
-        }*/
     </style>
 
 </head>
@@ -65,6 +34,8 @@
           <div id="result"></div>
           <audio id="scan-sound" src="{{ asset('sounds/scanner_sound.mp3') }}" preload="auto"></audio>
       </div>
+
+      
       <script src="{{ asset('js/html5-qrcode.min.js') }}"></script>
     <script src="{{ asset('js/scanner.js') }}"></script>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -81,5 +52,4 @@ console.log(`html5-qrcode library found!, ${Html5QrcodeScanner}`);
 
 })();
 </script>
-
-</x-app-layout>
+</html>
