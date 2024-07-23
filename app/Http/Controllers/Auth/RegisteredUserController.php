@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Http\Controllers\QrCodeController;
+use App\Jobs\GenerateQrCode;
+use App\Jobs\SignupEmail;
+use App\Events\UserRegistered;
+use Illuminate\Support\Facades\Log;
 
 
 class RegisteredUserController extends Controller
@@ -49,18 +53,29 @@ class RegisteredUserController extends Controller
             //'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+        if(!$user) {
+          \Log::error('User not autheniticated');
+        }
 
-        $qrCodeController= new QrCodeController(); //qrCode controller instance
+
+
+        /*$qrCodeController= new QrCodeController(); //qrCode controller instance
         $qrCode= $qrCodeController->generate($user,$request);
 
-        $qrCodeImage= $qrCode->getContent();
+        $qrCodeImage= $qrCode->getContent();*/
 
         Auth::login($user);
 
+        $id= $user->id;
 
+        Log::info('User registered with Id: '. $user->id);
+        event(new UserRegistered($user));
+
+        SignupEmail::dispatch($user);
 
         //return redirect(route('dashboard', absolute: false));
-        return redirect()->route('myQr', ['qr_code_image' => $qrCodeImage]);
+        return redirect()->route('qr-code.show', ['id'=> $user->id])->with('status','Attendee registered successfully');
     }
+
+
 }

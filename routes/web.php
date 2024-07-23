@@ -22,7 +22,8 @@ Route::post('/handleScanned', [ScansController::class, 'handleScannedData'])->na
 
 Route::middleware('auth')->group(function() {
 
-    Route::get('/qr-code', [QrCodeController::class, 'show'])->name('qr-code.show');
+    Route::get('/qr-code/{id}', [QrCodeController::class, 'show'])->name('qr-code.show');
+    Route::post('/user/{id}/generate', [QrCodeController::class, 'generateQrCode'])->name('qr-code.generateQrCode');
 });
 
 Route::get('/myQr', function() {

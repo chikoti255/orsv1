@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('qr_codes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('qr_code');
-            $table->string('email')->unique(); //additional info for qr_code verification
-            $table->binary('qr_code_image')->nullable();
+            $table->string('qr_code_string')->unique();
+            $table->string('qr_code_path')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

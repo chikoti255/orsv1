@@ -27,8 +27,8 @@ class User extends Authenticatable
       'organization','country',
     ];
 
-    public function qrcode() {
-      return $this->hasOne(QrCodeModel::class);
+    public function qrCode() {
+      return $this->hasOne(QrCodeModel::class, 'user_id');
     }
 
     public function scans() {

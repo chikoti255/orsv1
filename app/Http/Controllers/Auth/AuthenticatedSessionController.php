@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use App\Jobs\SignupEmail;
+use App\Jobs\GenerateQrCode;
 use App\Models\User;
 
 
@@ -32,9 +33,13 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        //$userId= Auth::user()->id;
+
           SignupEmail::dispatch($user);
 
-        return redirect()->intended(route('myQr', absolute: false));
+          GenerateQrCode::dispatch(Auth::user()->id);
+        //  dd(Auth::user()->id);
+        return redirect()->intended(route('qr-code.show', ['id' => Auth::user()->id], absolute: false));
     }
 
     /**

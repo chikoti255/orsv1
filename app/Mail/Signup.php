@@ -15,7 +15,7 @@ use App\Models\User;
 
 class Signup extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable, SerializesModels;w
 
     /**
      * Create a new message instance.
