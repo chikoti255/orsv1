@@ -15,6 +15,9 @@
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 
     <title>orsv1</title>
 </head>
@@ -34,10 +37,7 @@
                     <i class="uil uil-estate"></i>
                     <span class="link-name">Dashboard</span>
                 </a></li>
-                <li><a href="#">
-                    <i class="uil uil-files-landscapes"></i>
-                    <span class="link-name">Content</span>
-                </a></li>
+
                 <li><a href="#">
                     <i class="uil uil-chart"></i>
                     <span class="link-name">Analytics</span>
@@ -53,6 +53,10 @@
                 <li><a href="#">
                     <i class="uil uil-user-times"></i>
                     <span class="link-name">Absent</span>
+                </a></li>
+                <li><a href="{{ route('scanContainer') }}">
+                    <i class="bi bi-qr-code-scan"></i>
+                    <span class="link-name">Scanner</span>
                 </a></li>
             </ul>
 
@@ -81,10 +85,10 @@
           <div class="top">
               <i class="uil uil-bars sidebar-toggle"></i>
 
-              <div class="search-box">
+              <!--<div class="search-box">
                   <i class="uil uil-search"></i>
                   <input type="text" placeholder="Search here...">
-              </div>
+              </div> -->
 
               <!--<img src="images/profile.jpg" alt="">-->
           </div>

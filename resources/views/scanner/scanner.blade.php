@@ -10,7 +10,7 @@
         body {
           font-family: sans-serif;
         }
-
+ 
         #result {
           font-weight: bold;
           margin-top: 20px;
@@ -35,7 +35,7 @@
           <audio id="scan-sound" src="{{ asset('sounds/scanner_sound.mp3') }}" preload="auto"></audio>
       </div>
 
-      
+
       <script src="{{ asset('js/html5-qrcode.min.js') }}"></script>
     <script src="{{ asset('js/scanner.js') }}"></script>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
