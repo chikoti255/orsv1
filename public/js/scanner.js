@@ -6,37 +6,90 @@ const scanner = new Html5QrcodeScanner('reader', {
   fps: 120,
 });
 
-const scannedCode = null;
 
-let firstScan= true;
 
 const scanSound = document.getElementById('scan-sound');
 
 scanner.render(success, error);
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && entry.target === Swal.getContainer()) {
-      console.log("SweetAlert is visible!");
-      return; // Exit the loop if SweetAlert is visible
-    }
-  });
-});
+const alertShown = false;
 
-observer.observe(Swal.getContainer());
+
+
+function error(error) {
+  console.error(error);
+
+}
+
+
+//for the server request data
+async function onScanned(scanned_data) {
+  let csrfToken= null;
+  const csrfMeta = document.head.querySelector('meta[name="csrf-token"]');
+        csrfToken = csrfMeta ? csrfToken.getAttribute('content') : null;
+
+    const request= new Request('/handleScanned', {
+      method: "POST",
+      body: JSON.stringify({ scanned_data: scanned_data }),
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': csrfToken,
+
+      },
+    });
+
+    try {
+        const response= await fetch(request);
+          if(!response.ok) {
+              console.log(`Response status: ${response.status}`);
+
+              const errorMessage= await response.text();
+
+              Swal.fire({
+                title: 'Error!',
+                text: `There was an error processing the Qr Code: ${error.message}`,
+                icon: 'error'
+              });
+
+              return; //handling error scenario
+          }
+
+          const data = await response.json();
+          console.log(data);
+
+          if(data.success) {
+            Swal.fire({
+              title: 'Success!',
+              text: data.message,
+              icon: 'success'
+            });
+          } else {
+            Swal.fire({
+              title: 'Error!',
+              text: data.message,
+              icon: 'error'
+            });
+          }
+
+
+    } catch(error){
+      console.error(error.message);
+
+        Swal.fire({
+          title: 'Error!',
+          text: 'An unexpected error occurred',
+          icon: 'error'
+        });
+    }
+}
+
+
 
 function success(result) {
   const resultContainer = document.getElementById('result');
 
-  // Check if a previous alert is displayed (using Intersection Observer)
-  if (observer.takeRecords().some(record => record.isIntersecting)) {
-    return; // Don't proceed if SweetAlert is visible
-  }
 
-  if (firstScan && result !== scannedCode) {
 
-      firstScan = false;
-      
     Swal.fire({
       title: "Welcome!",
       text: `${result}`,
@@ -57,47 +110,7 @@ function success(result) {
       }, 5000);
 
     });
-  } else {
-    console.log("This QR code has already been scanned.");
-  }
 
 onScanned(`${result}`);
 
-}
-
-function error(error) {
-  console.error(error);
-
-}
-
-// Optional: For potential server-side validation
-function onScanned(scanned_data) {
-
-  const csrfToken = document.head.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-  fetch('/handleScanned', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-CSRF-TOKEN': csrfToken // Include CSRF token in the request headers
-
-    },
-    body: JSON.stringify({ scanned_data: scanned_data })
-  })
-    .then(response => response.json())
-    .then(data => {
-      if (data.scanned_data) {
-        const parts = data.scanned_data.original_data.split('|');
-        console.log(data.scanned_data);
-      }
-    })
-    .catch(error => {
-        console.error(error);
-
-        Swal.fire({
-          title: 'Error!',
-          text: 'Sorry, Qr code is already scanned.',
-          icon: 'error'
-        });
-    });
 }

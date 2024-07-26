@@ -31,9 +31,9 @@ class QrCodeController extends Controller
       $qrCode= QrCodeModel::where('user_id', $id)->first();
       $user = User::with('qrCode')->findOrFail($id);
 
-      if(!$qrCode) {
+      /*if(!$qrCode) {
           return redirect()->back()->with('error', 'Qr Code not found');
-      }
+      }*/
 
       return view('qrCode.show', compact('user','qrCode'));
     }

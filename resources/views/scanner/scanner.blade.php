@@ -1,6 +1,9 @@
-<html>
+@extends('admin.admin')
+
+@section('content')
 <head>
     <meta charset="UTF-8">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,17 +13,22 @@
         body {
           font-family: sans-serif;
         }
- 
+
         #result {
           font-weight: bold;
           margin-top: 20px;
+        }
+        .scanner-container {
+          position: relative;
+          top: 20%;
+          left: 30%;
         }
 
     </style>
 
 </head>
 <body>
-      <div class="scanner-container">
+      <div class="scanner-container" style="width: 700px; height: 700px;">
           <div class="box">
               <div id="reader" style="height: 500px;"></div>
           </div>
@@ -52,4 +60,6 @@ console.log(`html5-qrcode library found!, ${Html5QrcodeScanner}`);
 
 })();
 </script>
-</html>
+
+
+@endsection

@@ -19,13 +19,17 @@
             src="https://cdn.lordicon.com/fumyyjbn.json"
             trigger="loop"
             state="loop-line"
-            style="width:250px; height:250px">
+            style="width:330px; height:400px">
         </lord-icon>
+
+        <div class="qr-button">
+            <a style="text-decoration: none;" class="button" href="{{ route('scanner') }}">Start Scan</a>
+        </div>
       </div>
 
   </div>
   <div class="right-container">
-
+      
     <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
           <defs></defs>
           <path style="fill: rgb(137,204,255); stroke: rgb(137,204,255);" d="M 101.732 59.524 C 74.744 32.027 38.94 120.283 87.121 169.373 C -72.533 272.327 113.215 304.268 131.494 272.186 C 122.173 411.994 281.05 398.974 293.29 215.368 C 521.272 356.328 582.944 -30.968 306.819 66.559 C 342.253 -61.578 166.109 125.154 191.017 16.234 C 183.692 -2.811 87.858 23.451 101.732 59.524 Z"></path>

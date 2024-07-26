@@ -15,8 +15,9 @@
 
 }
 .left-container {
+
   padding-left: 50px;
-  margin-top: 250px;
+  margin-top: 160px;
   flex-direction: column;
 }
 
@@ -52,6 +53,20 @@ h2, h3 {
   font-weight: bold;
   font-style: sans-serif;
 }
-.lordicon {
+.lordicon lord-icon {
   margin-top: 70px;
+  transform: translate(-10%);
+}
+
+div.qr-button a.button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #333;
+  cursor: pointer;
+  background-color: rgb(137,204,255);
+}
+div.qr-button a.button:hover {
+  background-color: rgb(137,204,255,0.7);
 }
