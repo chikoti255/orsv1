@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Jobs\ProcessScannedData;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 
 class ScansController extends Controller
@@ -17,6 +18,7 @@ class ScansController extends Controller
 
             //ProcessScannedData::dispatch($scannedData);
             dispatch(new ProcessScannedData($scannedData));
+            Log::info('ProcessScannedData Job is dispatched successfully.');
 
             return response()->json([
                 'message' => 'Scanned Data Processed in the background'

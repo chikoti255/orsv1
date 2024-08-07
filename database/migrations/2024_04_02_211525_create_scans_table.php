@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('qr_code_string')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('status')->default('checked-in')->nullable();
+            $table->string('status')->default('Checked in')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

@@ -35,23 +35,28 @@ class ProcessScannedData implements ShouldQueue
         try {
           $parts= explode('|', $this->scannedData);
 
-          $userId= $parts[0]; //userid
-          $email= $parts[1]; //email
-          $qrcodeString= $parts[2]; //qrcodestring
+          $userId= $parts[1]; //userid
+          $email= $parts[2]; //email
+          $qrcodeString= $parts[0]; //qrcodestring
 
+            Log::info('Processing scanned data: userId='. $userId. ', email='.$email . ', qrcodeString='. $qrcodeString);
 
           $scans = new Scans;
-
           $scans->qr_code_string= $qrcodeString;
           $scans->user_id= $userId;
+
+          Log::info('Saving scan data: ' .json_encode($scans->toArray()));
+
           $scans->save();
 
+          Log::info('Scan data saved successfully.');
 
 
         }
         catch (\Exception $e) {
             // Handle any exceptions here
-            //\Log::error('Error processing scanned data: ' . $e->getMessage());
+            Log::error('Error processing scanned data: ' . $e->getMessage());
+
         }
 
     }

@@ -33,7 +33,7 @@ async function onScanned(scanned_data) {
       body: JSON.stringify({ scanned_data: scanned_data }),
       headers: {
         'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': csrfToken,
+        'X-CSRF-TOKEN': csrfToken, //it is put but not verified
 
       },
     });
