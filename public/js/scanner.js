@@ -57,19 +57,15 @@ async function onScanned(scanned_data) {
           const data = await response.json();
           console.log(data);
 
-          if(data.success) {
+
+
+          /*if(data.success || data.message) {
             Swal.fire({
               title: 'Success!',
               text: data.message,
               icon: 'success'
-            });
-          } else {
-            Swal.fire({
-              title: 'Error!',
-              text: data.message,
-              icon: 'error'
-            });
-          }
+            });*
+          }*/
 
 
     } catch(error){
@@ -87,6 +83,7 @@ async function onScanned(scanned_data) {
 
 function success(result) {
   const resultContainer = document.getElementById('result');
+
 
 
 

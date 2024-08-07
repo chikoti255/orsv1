@@ -21,6 +21,7 @@ class ScansController extends Controller
             Log::info('ProcessScannedData Job is dispatched successfully.');
 
             return response()->json([
+                'success' => true,
                 'message' => 'Scanned Data Processed in the background'
             ]);
         }

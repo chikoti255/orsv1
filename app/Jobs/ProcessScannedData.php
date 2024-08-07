@@ -39,17 +39,24 @@ class ProcessScannedData implements ShouldQueue
           $email= $parts[2]; //email
           $qrcodeString= $parts[0]; //qrcodestring
 
-            Log::info('Processing scanned data: userId='. $userId. ', email='.$email . ', qrcodeString='. $qrcodeString);
 
-          $scans = new Scans;
-          $scans->qr_code_string= $qrcodeString;
-          $scans->user_id= $userId;
 
-          Log::info('Saving scan data: ' .json_encode($scans->toArray()));
+            $scanned_database= Scans::where('qr_code_string',$qrcodeString)->first();
 
-          $scans->save();
+            if(!$scanned_database) {
+                  $scans = new Scans;
+                  $scans->qr_code_string= $qrcodeString;
+                  $scans->user_id= $userId;
 
-          Log::info('Scan data saved successfully.');
+                    Log::info('Processing scanned data: userId='. $userId. ', email='.$email . ', qrcodeString='. $qrcodeString);
+                  $scans->save();
+
+                    Log::info('Saving scan data: ' .json_encode($scans->toArray()));
+                      Log::info('Scan data saved successfully.');
+
+            }else {
+                Log::info('Scanned data already exists in database.');
+            }
 
 
         }
