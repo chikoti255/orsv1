@@ -42,14 +42,15 @@
                   </div>
                   <!-- Modal body -->
                   <div class="p-4 space-y-4">
-                    <div class="bg-white p-8 rounded-lg w-full max-w-3xl">
+                    <div class="bg-white p-4 rounded-lg w-full max-w-3xl">
 
-  <form action="#" method="POST" class="space-y-6">
+  <form action="{{ route('attendee.register') }}" method="POST" class="space-y-6">
+    @csrf
       <!-- Full Name and Email -->
       <div class="flex gap-4">
           <div class="flex-1">
               <label for="full-name" class="block text-sm font-medium text-gray-700">Full Name</label>
-              <input type="text" id="full-name" name="full-name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm" required>
+              <input type="text" id="full-name" name="full_name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm" required>
           </div>
           <div class="flex-1">
               <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
@@ -61,7 +62,7 @@
       <div class="flex gap-4">
           <div class="flex-1">
               <label for="mobile-no" class="block text-sm font-medium text-gray-700">Mobile No</label>
-              <input type="tel" id="mobile-no" name="mobile-no" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm" required>
+              <input type="tel" id="mobile-no" name="mobile_no" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm" required>
           </div>
           <div class="flex-1">
               <label for="organization" class="block text-sm font-medium text-gray-700">Organization</label>
@@ -72,8 +73,11 @@
       <!-- Memberships and Title -->
       <div class="flex gap-4">
           <div class="flex-1">
-              <label for="memberships" class="block text-sm font-medium text-gray-700">Memberships</label>
-              <input type="text" id="memberships" name="memberships" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm">
+              <label for="membership" class="block text-sm font-medium text-gray-700">Membership</label>
+              <select id="membership" name="membership" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm">
+                  <option value="EACA Member">EACA Member</option>
+                  <option value="Non-EACA Member">Non-EACA Member</option>
+              </select>
           </div>
           <div class="flex-1">
               <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
@@ -85,16 +89,22 @@
       <div class="flex gap-4 items-center">
           <div class="flex-1">
               <label for="payment-made" class="block text-sm font-medium text-gray-700">Payment Made</label>
-              <select id="payment-made" name="payment-made" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm">
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+              <select id="payment-made" name="confirm_payment" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm">
+                  <option value="Yes, I Complete my payment">Yes, I Complete my payment</option>
+                  <option value="No, I will pay on arrival">No, I will pay on arrival</option>
               </select>
           </div>
           <div class="flex-1">
-              <label for="payment-receipt" class="block text-sm font-medium text-gray-700">Upload Payment Receipt</label>
-              <input type="file" id="payment-receipt" name="payment-receipt" class="mt-1 block w-full text-sm text-gray-500 border border-gray-300 rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <label for="payment_slip" class="block text-sm font-medium text-gray-700">Upload Payment Slip</label>
+              <input type="file" id="payment_slip" name="payment_slip" class="mt-1 block w-full text-sm text-gray-500 border border-gray-300 rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500">
           </div>
       </div>
+
+        <!-- country -->
+        <div class="flex-1">
+            <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+            <input type="input" id="country" name="country" class="p-2 mt-1 block w-full text-sm text-gray-500 border border-gray-300 rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        </div>
 
       <!-- Comments -->
       <div>
@@ -109,7 +119,7 @@
                   <!-- end modal body -->
                   <!-- Modal footer -->
                   <div class="flex items-center p-4 border-t border-gray-200 rounded-b dark:border-gray-600">
-                      <button id="accept" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                   </div>
               </form>
               </div>
@@ -123,7 +133,7 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Username</th>
+            <th>Attendee name</th>
             <th>Email</th>
             <th>Organization</th>
             <th>Country</th>
@@ -133,19 +143,19 @@
         </tr>
       </thead>
       <tbody>
-        @foreach($users as $user)
+        @foreach($attendees as $attendee)
             <tr>
-                  <td>{{ $user->id }}</td>
-                  <td>{{ $user->first_name}} {{ $user->last_name }}</td>
-                  <td>{{ $user->email }}</td>
-                  <td>{{ $user->organization }}</td>
-                  <td>{{ $user->country }}</td>
+                  <td>{{ $attendee->id }}</td>
+                  <td>{{ $attendee->full_name}}</td>
+                  <td>{{ $attendee->email }}</td>
+                  <td>{{ $attendee->organization }}</td>
+                  <td>{{ $attendee->country }}</td>
                   <td>
                     <span class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">
-                        {{ $user->status }}
+                        {{ $attendee->status }}
                     </span>
                   </td>
-                  <td>{{ $user->created_at->format('d M Y') }}</td>
+                  <td>{{ $attendee->created_at->format('d M Y') }}</td>
                   <td style="display: flex; flex-direction: row; justify-content: space-between;">
                       <p><i style="font-size: 17px; color: blue;" class="uil uil-eye"></i></p>
                       <p><i style="font-size: 17px" class="uil uil-edit"></i></p>
@@ -157,7 +167,7 @@
     <tfoot>
         <tr>
           <th>Id</th>
-          <th>Username</th>
+          <th>attendeename</th>
           <th>Email</th>
           <th>Organization</th>
           <th>Country</th>

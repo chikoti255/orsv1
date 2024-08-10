@@ -590,6 +590,7 @@ class ComposerStaticInitfd765f109457bf986b222d968af03f9a
         'App\\Mail\\Signup' => __DIR__ . '/../..' . '/app/Mail/Signup.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\QrCodeModel' => __DIR__ . '/../..' . '/app/Models/QrCodeModel.php',
+        'App\\Models\\RegisterAttendee' => __DIR__ . '/../..' . '/app/Models/RegisterAttendee.php',
         'App\\Models\\Scans' => __DIR__ . '/../..' . '/app/Models/Scans.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

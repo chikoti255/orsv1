@@ -37,7 +37,9 @@ Route::get('/myQr', function() {
 Route::middleware('admin')->group(function() {
 
   Route::prefix('/attendee')->group(function() {
-    Route::get('/registered', [UserController::class, 'index'])->name('attendee.registered');
+    Route::get('/registered', [AttendeeController::class, 'index'])->name('attendee.registered');
+    Route::post('/register_attendee', [AttendeeController::class, 'store'])->name('attendee.register');
+
     Route::get('/checkedIn', [UserController::class, 'checkedIn'])->name('attendee.checkedIn');
     Route::get('/absent', [UserController::class, 'absent'])->name('attendee.absent');
 

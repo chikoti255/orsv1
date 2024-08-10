@@ -28,6 +28,7 @@ return array(
     'App\\Mail\\Signup' => $baseDir . '/app/Mail/Signup.php',
     'App\\Models\\Admin' => $baseDir . '/app/Models/Admin.php',
     'App\\Models\\QrCodeModel' => $baseDir . '/app/Models/QrCodeModel.php',
+    'App\\Models\\RegisterAttendee' => $baseDir . '/app/Models/RegisterAttendee.php',
     'App\\Models\\Scans' => $baseDir . '/app/Models/Scans.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
