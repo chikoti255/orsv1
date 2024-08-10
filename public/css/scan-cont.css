@@ -1,0 +1,72 @@
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+}
+.left-container, .right-container {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+
+}
+.left-container {
+
+  padding-left: 50px;
+  margin-top: 160px;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 1600px) {
+    .right-container {
+      width: 100% !important;
+    }
+}
+.container > .right-container {
+    padding: 0;
+    width: 100% !important;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+}
+.image img {
+  position: absolute;
+  top: 25%;
+  transform: translateX(28%);
+  z-index: 2;
+}
+.right-container svg {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100vh;
+
+}
+
+h2, h3 {
+  font-weight: bold;
+  font-style: sans-serif;
+}
+.lordicon lord-icon {
+  margin-top: 70px;
+  transform: translate(-10%);
+}
+
+div.qr-button a.button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #333;
+  cursor: pointer;
+  background-color: rgb(137,204,255);
+}
+div.qr-button a.button:hover {
+  background-color: rgb(137,204,255,0.7);
+}
