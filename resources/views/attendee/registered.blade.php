@@ -75,8 +75,10 @@
           <div class="flex-1">
               <label for="membership" class="block text-sm font-medium text-gray-700">Membership</label>
               <select id="membership" name="membership" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm">
+                  <option value=""></option>
                   <option value="EACA Member">EACA Member</option>
                   <option value="Non-EACA Member">Non-EACA Member</option>
+                  <option value="Student">Student</option>
               </select>
           </div>
           <div class="flex-1">
@@ -90,6 +92,7 @@
           <div class="flex-1">
               <label for="payment-made" class="block text-sm font-medium text-gray-700">Payment Made</label>
               <select id="payment-made" name="confirm_payment" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm">
+                  <option value=""></option>
                   <option value="Yes, I Complete my payment">Yes, I Complete my payment</option>
                   <option value="No, I will pay on arrival">No, I will pay on arrival</option>
               </select>

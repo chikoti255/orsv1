@@ -63,7 +63,7 @@
                        type="email"
                        name="email"
                        id="email"
-                       class="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                       class="px-3 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
                        placeholder="example@mail.com"
                        required
                      />
@@ -74,7 +74,7 @@
                         name="password"
                        type="password"
                        id="password"
-                       class="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                       class="px-3 py-2 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
                        placeholder="Password"
                        required
                      />
@@ -91,7 +91,7 @@
                  Login
                </button>
              </form>
-             <p class="text-center text-gray-500 text-sm">Not a member? <a href="#" class="text-blue-500 hover:underline">Register Now</a></p>
+             <p class="text-center text-gray-500 text-sm">Not a member? <a href="#" class="text-white hover:underline">Register Now</a></p>
            </div>
 
          </div>
