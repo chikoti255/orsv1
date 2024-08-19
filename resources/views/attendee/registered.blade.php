@@ -147,24 +147,28 @@
       </thead>
       <tbody>
         @foreach($attendees as $attendee)
-            <tr>
-                  <td>{{ $attendee->id }}</td>
-                  <td>{{ $attendee->full_name}}</td>
-                  <td>{{ $attendee->email }}</td>
-                  <td>{{ $attendee->organization }}</td>
-                  <td>{{ $attendee->country }}</td>
-                  <td>
-                    <span class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">
-                        {{ $attendee->status }}
-                    </span>
-                  </td>
-                  <td>{{ $attendee->created_at->format('d M Y') }}</td>
-                  <td style="display: flex; flex-direction: row; justify-content: space-between;">
-                      <p><i style="font-size: 17px; color: blue;" class="uil uil-eye"></i></p>
-                      <p><i style="font-size: 17px" class="uil uil-edit"></i></p>
-                      <p><i style="font-size: 17px; color: red;" class="uil uil-trash-alt"></i></p>
-                  </td>
-              </tr>
+              <tr>
+                      <td>{{ $attendee->id }}</td>
+                      <td>{{ $attendee->full_name}}</td>
+                      <td>{{ $attendee->email }}</td>
+                      <td>{{ $attendee->organization }}</td>
+                      <td>{{ $attendee->country }}</td>
+                      <td>
+                        <span class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">
+                            {{ $attendee->status }}
+                        </span>
+                      </td>
+                      <td>{{ $attendee->created_at->format('d M Y') }}</td>
+                      <td style="display: flex; flex-direction: row; justify-content: space-between;">
+                          <p>
+                              <a href="{{ route('attendee.show', $attendee->id) }}">
+                                  <i style="font-size: 17px; color: blue;" class="uil uil-eye"></i>
+                              </a>
+                            </p>
+                          <p><i style="font-size: 17px" class="uil uil-edit"></i></p>
+                          <p><i style="font-size: 17px; color: red;" class="uil uil-trash-alt"></i></p>
+                      </td>
+                </tr>
           @endforeach
     </tbody>
     <tfoot>

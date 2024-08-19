@@ -58,6 +58,12 @@ class AttendeeController extends Controller
           return view('attendee.registered', compact('attendees'));
         }
 
+        public function show($id) {
+            $attendee = RegisterAttendee::findOrFail($id);
+
+            return view('attendee-crud.attendee-show', ['attendee' => $attendee]);
+        }
+
 
 
 }

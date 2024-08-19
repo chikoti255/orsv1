@@ -32,6 +32,9 @@ body {
 }
 #login-form {
   background: rgba(255,255,255,0.4);
+  animation: fadeInFromTop 1s ease-out forwards;
+  max-width: 400px;
+  width: 100%;
 }
 input {
   background: rgba(255,255,255,0.4);
@@ -68,12 +71,6 @@ input {
     to{ transform: rotate(1turn) }
 }
 
-#login-form {
-animation: fadeInFromTop 1s ease-out forwards;
-max-width: 400px;
-width: 100%;
-
-}
 
 @keyframes fadeInFromTop {
 0% {

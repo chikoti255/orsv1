@@ -43,6 +43,8 @@ Route::middleware('admin')->group(function() {
     Route::get('/checkedIn', [UserController::class, 'checkedIn'])->name('attendee.checkedIn');
     Route::get('/absent', [UserController::class, 'absent'])->name('attendee.absent');
 
+    Route::get('/attendee-show/{id}', [AttendeeController::class, 'show'])->name('attendee.show');
+
   });
 });
 

@@ -40,4 +40,6 @@ class QrCodeController extends Controller
 
 
 
+
+
 }
