@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Events\\UserRegistered' => $baseDir . '/app/Events/UserRegistered.php',
+    'App\\Http\\Controllers\\AnalyticsController' => $baseDir . '/app/Http/Controllers/AnalyticsController.php',
     'App\\Http\\Controllers\\AttendeeController' => $baseDir . '/app/Http/Controllers/AttendeeController.php',
     'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController' => $baseDir . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
     'App\\Http\\Controllers\\Auth\\RegisteredUserController' => $baseDir . '/app/Http/Controllers/Auth/RegisteredUserController.php',

@@ -66,4 +66,6 @@ class AttendeeController extends Controller
 
 
 
+
+
 }

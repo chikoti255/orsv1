@@ -6,6 +6,7 @@ use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AttendeeController;
 use App\Http\Controllers\ScansController;
+use App\Http\Controllers\AnalyticsController;
 
 
 Route::get('/', function () {
@@ -37,6 +38,8 @@ Route::get('/myQr', function() {
 Route::middleware('admin')->group(function() {
 
   Route::prefix('/attendee')->group(function() {
+      Route::get('/analytics', [AnalyticsController::class, 'showAnalytics'])->name('analytics.show');
+
     Route::get('/registered', [AttendeeController::class, 'index'])->name('attendee.registered');
     Route::post('/register_attendee', [AttendeeController::class, 'store'])->name('attendee.register');
 

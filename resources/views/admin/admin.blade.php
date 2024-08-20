@@ -38,10 +38,11 @@
                     <span class="link-name">Dashboard</span>
                 </a></li>
 
-                <li><a href="#">
-                    <i class="uil uil-chart"></i>
-                    <span class="link-name">Analytics</span>
-                </a></li>
+                <li><a href="{{ route('analytics.show') }}">
+                        <i class="uil uil-chart"></i>
+                        <span class="link-name">Analytics</span>
+                    </a>
+                </li>
                 <li><a href="{{ route('attendee.registered') }}">
                     <i class="uil uil-users-alt"></i>
                     <span class="link-name">Registered</span>
