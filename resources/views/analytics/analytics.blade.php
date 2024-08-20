@@ -17,6 +17,10 @@
 
 </div>
 
+<div class="bar-chart">
+
+</div>
+
 <script>
 
 google.charts.load("current", {packages:["corechart"]});
