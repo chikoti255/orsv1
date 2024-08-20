@@ -14,7 +14,10 @@ class AnalyticsController extends Controller
         $nonEacaCount = RegisterAttendee::where('membership','Non-EACA Member')->count();
         $studentCount = RegisterAttendee::where('membership','Student')->count();
 
-        return view('analytics.analytics', compact('eacaCount','nonEacaCount','studentCount'));
+        $payed = RegisterAttendee::where('confirm_payment', 'YES, i Complete my payment')->count();
+        $notPayed= RegisterAttendee::where('confirm_payment', 'No, I will pay on arrival')->count();
+
+        return view('analytics.analytics', compact('eacaCount','nonEacaCount','studentCount','payed','notPayed'));
 
     }
 }

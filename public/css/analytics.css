@@ -1,0 +1,16 @@
+.charts {
+  display: flex;
+  justify-content: space-around;
+  flex-grow: 1;
+  align-items: flex-start;
+}
+.charts > .pie-chart {
+  box-shadow: 0px 0px 5px rgba(128,128,128,0.3);
+  padding: 8px;
+  border-radius: 15px;
+}
+.charts > .donut-chart {
+  box-shadow: 0px 0px 5px rgba(128,128,128,0.3);
+  padding: 8px;
+  border-radius: 15px;
+}
