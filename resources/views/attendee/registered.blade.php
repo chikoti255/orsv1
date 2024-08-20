@@ -7,8 +7,10 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.semanticui.css" />
 <!--tailwind css -->
 <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/showAttendee.css') }}" />
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
   <script src="https://cdn.tailwindcss.com"></script> <!--for not using it in production -->
+  <script src="{{ asset('/js/showAttendee.js') }}"></script>
 
 
 <div class="mt-4">
@@ -161,9 +163,9 @@
                       <td>{{ $attendee->created_at->format('d M Y') }}</td>
                       <td style="display: flex; flex-direction: row; justify-content: space-between;">
                           <p>
-                              <a href="{{ route('attendee.show', $attendee->id) }}">
-                                  <i style="font-size: 17px; color: blue;" class="uil uil-eye"></i>
-                              </a>
+                                <button onClick="viewUserDetails()">
+                                    <i style="font-size: 17px; color: blue;" class="uil uil-eye"></i>
+                                </button>
                             </p>
                           <p><i style="font-size: 17px" class="uil uil-edit"></i></p>
                           <p><i style="font-size: 17px; color: red;" class="uil uil-trash-alt"></i></p>
@@ -186,6 +188,17 @@
 </table>
 
 </div>
+
+        <!-- Show modal -->
+        <div id="userModal" class="modal">
+            <div class="modal-content">
+                  <span class="close" onclick="closeModal()">&times</span>
+
+                  <div id="modal-body">Modal</div>
+            </div>
+        </div>
+
+
 </div>
 
 
@@ -223,5 +236,7 @@ acceptBtn.addEventListener('click', () => {
 declineBtn.addEventListener('click', () => {
     modal.classList.add('hidden');
 });
+
+
     </script>
 @endsection
