@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['POST','GET','OPTIONS','PUT','DELETE','PATCH'],
 
-    'allowed_origins' => ['http://localhost:8000'],
+    'allowed_origins' => ['http://localhost:8000','http://127.0.0.1:8000/attendee/*'],
 
     'allowed_origins_patterns' => [],
 

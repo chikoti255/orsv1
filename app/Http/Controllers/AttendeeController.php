@@ -61,7 +61,7 @@ class AttendeeController extends Controller
         public function show($id) {
             $attendee = RegisterAttendee::findOrFail($id);
 
-            return view('attendee-crud.attendee-show', ['attendee' => $attendee]);
+            return response()->json($attendee);
         }
 
 

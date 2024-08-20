@@ -30,3 +30,6 @@
   text-decoration: none;
   cursor: pointer;
 }
+#modal-body {
+  text-align: center;
+}

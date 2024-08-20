@@ -11,6 +11,8 @@
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
   <script src="https://cdn.tailwindcss.com"></script> <!--for not using it in production -->
   <script src="{{ asset('/js/showAttendee.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 
 <div class="mt-4">
@@ -161,14 +163,21 @@
                         </span>
                       </td>
                       <td>{{ $attendee->created_at->format('d M Y') }}</td>
-                      <td style="display: flex; flex-direction: row; justify-content: space-between;">
+                      <td style="display: flex; flex-direction: row; justify-content: space-between; gap: 5px;">
                           <p>
-                                <button onClick="viewUserDetails()">
+                                <button onClick="viewUserDetails({{ $attendee->id }})">
                                     <i style="font-size: 17px; color: blue;" class="uil uil-eye"></i>
                                 </button>
                             </p>
-                          <p><i style="font-size: 17px" class="uil uil-edit"></i></p>
-                          <p><i style="font-size: 17px; color: red;" class="uil uil-trash-alt"></i></p>
+                          <p>
+
+                                    <i style="font-size: 17px" class="uil uil-edit"></i>
+                          </p>
+                          <p>
+                              <button onClick="deleteAttendee()">
+                                  <i style="font-size: 17px; color: red;" class="uil uil-trash-alt"></i>
+                              </button>
+                          </p>
                       </td>
                 </tr>
           @endforeach
