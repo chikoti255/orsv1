@@ -24,7 +24,8 @@ return Application::configure(basePath: dirname(__DIR__))
 
     $middleware->validateCsrfTokens(except: [ //to not verify csrf token on scanning
         'http://127.0.0.1:8000/handleScanned',
-        'http://127.0.0.1:8000/attendee/*'
+        'http://127.0.0.1:8000/attendee/*',
+        'http://127.0.0.1:8000//attendee/analytics/get-countries',
     ]);
 
     })

@@ -38,7 +38,12 @@ Route::get('/myQr', function() {
 Route::middleware('admin')->group(function() {
 
   Route::prefix('/attendee')->group(function() {
-      Route::get('/analytics', [AnalyticsController::class, 'showAnalytics'])->name('analytics.show');
+
+          Route::prefix('/analytics')->group(function() {
+                Route::get('/', [AnalyticsController::class, 'showAnalytics'])->name('analytics.show');
+          
+                Route::get('/get-countries', [AnalyticsController::class, 'getCountries'])->name('analytics.getCountries');
+          });
 
     Route::get('/registered', [AttendeeController::class, 'index'])->name('attendee.registered');
     Route::post('/register_attendee', [AttendeeController::class, 'store'])->name('attendee.register');
@@ -46,10 +51,14 @@ Route::middleware('admin')->group(function() {
     Route::get('/checkedIn', [UserController::class, 'checkedIn'])->name('attendee.checkedIn');
     Route::get('/absent', [UserController::class, 'absent'])->name('attendee.absent');
 
+
+
     Route::get('/{id}', [AttendeeController::class, 'show'])->name('attendee.show');
 
   });
 });
+
+
 
 
 
