@@ -43,9 +43,9 @@ function createBarChart(groupedData) {
 
     var bar = {
       title: "Countries Statistics of EACA Attendees",
-      width: 500,
+      width: 800,
       height: 400,
-      bar: { groupWidth: "95%"},
+      bar: { groupWidth: "80%"},
       legend: { position: "none" },
       margin: {
           top: 20,

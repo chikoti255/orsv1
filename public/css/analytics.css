@@ -1,20 +1,28 @@
-.charts {
+.charts > .row1 {
   display: flex;
+  flex-direction: row;
   flex-grow: 1;
+  justify-content: space-around;
   align-items: flex-start;
+  margin-bottom: 20px;
 }
-.charts > .pie-chart {
+.charts > .row1 > .pie-chart {
   box-shadow: 0px 0px 5px rgba(128,128,128,0.3);
-  padding: 3px;
+  max-width: 520px;
   border-radius: 15px;
 }
 .charts > .donut-chart {
   box-shadow: 0px 0px 5px rgba(128,128,128,0.3);
   padding: 8px;
+  max-width: 520px;
   border-radius: 15px;
 }
-.charts > .bar-chart {
+.charts > .row1 > .bar-chart {
   box-shadow: 0px 0px 5px rgba(128,128,128,0.3);
-  padding: 8px;
   border-radius: 15px;
+}
+.charts {
+  display: flex;
+  flex-direction: column;
+
 }

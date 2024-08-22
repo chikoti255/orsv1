@@ -7,26 +7,27 @@
 <script type="text/javascript" src="{{ asset('js/analytics.js') }}"></script>
 
 
-  <div>
-
     <div class="charts">
-          <div class="pie-chart">
-                <div id="piechart_3d" style="width: 500px; height: 400px;"></div>
+          <div class="row1">
+                  <div class="pie-chart">
+                        <div id="piechart_3d" style="width: 500px; height: 400px;"></div>
+                  </div>
+
+                  <div class="bar-chart">
+                        <div id="columnchart_values" style="width: 800px; height: 400px;"></div>
+                  </div>
           </div>
 
-          <div class="donut-chart">
-              <div id="donutchart" style="width: 500px; height: 400px;"></div>
-          </div>
-
-          <div class="bar-chart">
-                <div id="columnchart_values" style="width: 500px; height: 400px;"></div>
+          <div class="row1">
+                <div class="donut-chart">
+                    <div id="donutchart" style="width: 500px; height: 400px;"></div>
+                </div>
+                <div class="bar-chart">
+                </div>
           </div>
 
     </div>
 
-
-
-  </div>
 
 <script>
 
