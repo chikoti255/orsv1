@@ -22,7 +22,7 @@ class RegisterAttendee extends Model
 
 
     public function qrCode() {
-      return $this->hasOne(QrCodeModel::class, 'user_id');
+      return $this->hasOne(QrCodeModel::class, 'attendee_id');
     }
 
     public function scans() {

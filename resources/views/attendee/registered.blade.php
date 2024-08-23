@@ -211,25 +211,15 @@ use Illuminate\Support\Facades\Storage;
 
                   <div id="modal-body">Modal</div>
 
-@foreach ($attendees as $attendee)
-                  @if($attendee->id)
-                      <div class="mb-4">
-                          <img src="{{ asset('storage/'. $attendee->id->qr_code_path) }}" alt="QR Code" />
+                        <div id="qrCodeContainer">
+
+                        </div>
+
+                      <div class="qrCodeButton">
+                            <button class="btn btn-primary" onClick="generateQrCode()">
+                                  Generate Qr Code
+                            </button>
                       </div>
-                  @else
-
-                      </p>QR code not generated yet.</p>
-                 @endif
-
-                <div class="flex items-center mt-8">
-                    <form action="{{ route('qr-code.generateQrCode', ['id' => $attendee->id]) }}" method="POST">
-                        @csrf
-                          <button type="submit" class="btn px-2 py-1 bg-blue-500 focus:outline-none rounded-md text-white hover:bg-blue-700 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition ease-in-out duration-150">
-                              Generate qr code<br/> <i class="bi bi-qr-code"></i>
-                          </button>
-                    </form>
-                </div>
-@endforeach
             </div>
         </div>
 

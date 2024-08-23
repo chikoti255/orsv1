@@ -14,12 +14,12 @@ class QrCodeModel extends Model
     protected $table= "qr_codes";
 
     protected $fillable= [
-      'user_id',  'qr_code_string',  'qr_code_path'
+      'attendee_id',  'qr_code_string',  'qr_code_path'
     ];
 
     public function user() {
       //the qr_code belongs to the user 1:1
-      return  $this->belongsTo(RegisterAttendee::class, 'user_id');
+      return  $this->belongsTo(RegisterAttendee::class, 'attendee_id');
     }
 
     /* Accessor to get the QR code path directly

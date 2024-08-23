@@ -14,6 +14,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Storage;
 use App\Models\QrCodeModel;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 use App\Models\RegisterAttendee;
 
 
@@ -24,13 +25,13 @@ class GenerateQrCode implements ShouldQueue
     /**
      * Create a new job instance.
      */
-     protected $userId;
+     protected $attendeeId;
 
      //public $tries = 3;
 
-    public function __construct($userId)
+    public function __construct($attendeeId)
     {
-        $this->userId = $userId;
+        $this->attendeeId = $attendeeId;
     }
 
     /**
@@ -39,17 +40,17 @@ class GenerateQrCode implements ShouldQueue
     public function handle(): void
     {
         try {
-          $user = RegisterAttendee::find($this->userId);
+          $attendee = RegisterAttendee::find($this->attendeeId);
 
-            if(!$user) {
-                Log::error("User not found with id : {$user->id}");
+            if(!$attendee) {
+                Log::error("User not found with id : {$attendee->id}");
 
                 return;
             }
               $qr_code_string= uniqid('qr_');
 
 
-              $data= "{$qr_code_string}|{$user->id}|{$user->email}";
+              $data= "{$qr_code_string}|{$attendee->id}|{$attendee->email}";
 
               //Generating qr code
               $renderer= new ImageRenderer(
@@ -62,7 +63,7 @@ class GenerateQrCode implements ShouldQueue
               //generating qr code as svg string
               $qrCode= $writer->writeString($data);
 
-              $path = "qr_codes/user_{$user->id}.svg";
+              $path = "qr_codes/user_{$attendee->id}.svg";
 
               Storage::disk('public')->put($path, $qrCode);
 
@@ -72,12 +73,12 @@ class GenerateQrCode implements ShouldQueue
               );*/
 
               $qrModel = new QrCodeModel();
-              $qrModel->user_id = $user->id;
+              $qrModel->attendee_id = $attendee->id;
               $qrModel->qr_code_string = $qr_code_string;
               $qrModel->qr_code_path = $path;
               $qrModel->save();
 
-              Log::info("Qr code generated and stored for the user id: {$user->id}");
+              Log::info("Qr code generated and stored for the user id: {$attendee->id}");
 
 
         } catch(\Exception $e) {

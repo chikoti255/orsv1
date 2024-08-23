@@ -1,4 +1,6 @@
 
+let attendeeData = null;
+
 function viewUserDetails(attendeeId) {
 
     fetch(`/attendee/${attendeeId}`)
@@ -10,10 +12,49 @@ function viewUserDetails(attendeeId) {
             `;
 
             document.getElementById('userModal').style.display= "block";
+
+                attendeeData = data;
+              console.log(attendeeData);
+
     })
     .catch(error => console.error('Error fetching user details: ', error));
 
+
 }
+
+
+
+  function generateQrCode() {
+
+      const data = {
+            email: attendeeData.email
+      };
+
+          document.getElementById('qrCodeContainer').innerHTML = '<p>Generating QR Code.....';
+
+              fetch(`/attendee/qr-code/${attendeeData.id}`, {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(data)
+              })
+                  .then(response => response.json())
+                  .then(data => {
+                        const qrCodeElement = document.getElementById('qrCodeContainer');
+                            qrCodeElement.innerHTML = `<img src="{{ asset('storage/${data.qr_code_path}') }}" alt="Qr Code" />`;
+                  })
+                  .catch(error => {
+                      console.error(`Error fetching Qr Code: `, error);
+                  });
+
+
+  }
+
+
+
+
+
 
 function closeModal() {
   document.getElementById('userModal').style.display = "none";

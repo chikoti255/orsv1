@@ -56,15 +56,7 @@ class AttendeeController extends Controller
 
           $attendees = RegisterAttendee::all();
 
-        // Create an array to hold QR codes for each attendee
-        $qrCodes = [];
-
-        // Loop through each attendee and fetch their QR code
-        foreach ($attendees as $attendee) {
-            $qrCodes[$attendee->id] = QrCodeModel::where('user_id', $attendee->id)->first();
-        }
-
-          return view('attendee.registered', compact('attendees','qrCodes'));
+          return view('attendee.registered', compact('attendees'));
         }
 
         public function show($id) {

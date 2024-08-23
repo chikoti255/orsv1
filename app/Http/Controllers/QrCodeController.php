@@ -18,27 +18,29 @@ class QrCodeController extends Controller
 {
 
 
-    public function generateQrCode($id) {
+    public function generateQrCode($attendeeId) {
           //$id= Auth::id();
           $attendee = RegisterAttendee::all();
-        GenerateQrCode::dispatch($id);
 
-        return redirect()->route('attendee.registered', ['id' => $id])->with('status', 'QR Code generation dispatched!');
+          $job = new GenerateQrCode($attendeeId);
+                  dispatch($job);
+
+        return redirect()->back()->with('success','Qr Code generation initiated successfully');
     }
 
 
 
-    public function show($id) {
+    /*public function show($id) {
 
       $qrCode= QrCodeModel::where('user_id', $id)->first();
       $user = RegisterAttendee::with('qrCode')->findOrFail($id);
 
-      /*if(!$qrCode) {
+      if(!$qrCode) {
           return redirect()->back()->with('error', 'Qr Code not found');
-      }*/
+      }
 
       return view('attendee.registered', compact('user','qrCode'));
-    }
+    } */
 
 
 
