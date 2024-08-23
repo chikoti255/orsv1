@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\RegisterAttendee;
 use Illuminate\Support\Facades\DB;
+use App\Models\Scans;
 
 class AnalyticsController extends Controller
 {
@@ -18,8 +19,11 @@ class AnalyticsController extends Controller
         $payed = RegisterAttendee::where('confirm_payment', 'YES, i Complete my payment')->count();
         $notPayed= RegisterAttendee::where('confirm_payment', 'No, I will pay on arrival')->count();
 
+        $registeredAttendees= RegisterAttendee::count();
+        $checkedInAttendees = Scans::count();
+
         return view('analytics.analytics',
-              compact('eacaCount','nonEacaCount','studentCount','payed','notPayed'));
+              compact('eacaCount','nonEacaCount','studentCount','payed','notPayed','registeredAttendees','checkedInAttendees'));
 
     }
 

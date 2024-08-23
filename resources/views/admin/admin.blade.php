@@ -47,7 +47,7 @@
                     <i class="uil uil-users-alt"></i>
                     <span class="link-name">Registered</span>
                 </a></li>
-                <li><a href="#">
+                <li><a href="{{ route('attendee.checkedIn') }}">
                     <i class="uil uil-user-check"></i>
                     <span class="link-name">Checked-in</span>
                 </a></li>

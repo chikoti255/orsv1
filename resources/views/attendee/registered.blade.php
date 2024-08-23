@@ -215,7 +215,7 @@ use Illuminate\Support\Facades\Storage;
                         <div id="qrCodeContainer"></div>
 
                         <div class="qrCodeButton">
-                              <button class="btn btn-primary" onClick="generateQrCode()">
+                              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick="generateQrCode()">
                                     Generate Qr Code
                               </button>
                         </div>

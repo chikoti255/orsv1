@@ -14,10 +14,10 @@ class Scans extends Model
     protected $table= 'scans';
 
     protected $fillable = [
-        'qr_code_string','user_id','status'
+        'qr_code_string','attendee_id','status'
     ];
 
-    public function user() {
-        return $this->belongsTo(RegisterAttendee::class, 'user_id');
+    public function attendee() {
+        return $this->belongsTo(RegisterAttendee::class, 'attendee_id');
     }
 }

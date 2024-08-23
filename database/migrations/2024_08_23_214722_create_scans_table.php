@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('scans', function (Blueprint $table) {
             $table->id();
             $table->string('qr_code_string')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('attendee_id')->nullable();
             $table->string('status')->default('Checked in')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('attendee_id')->references('id')->on('registered_users')->onDelete('cascade');
             $table->timestamps();
         });
     }

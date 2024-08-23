@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\RegisterAttendee;
 use App\Models\QrCodeModel;
+use App\Models\Scans;
 
 
 class AttendeeController extends Controller
@@ -63,6 +64,13 @@ class AttendeeController extends Controller
             $attendee = RegisterAttendee::findOrFail($id);
 
             return response()->json($attendee);
+        }
+
+        public function checkedIn() {
+
+            $scanned_attendees = Scans::all();
+
+            return view('attendee.checkedIn', ['scanned_attendees' => $scanned_attendees]);
         }
 
 

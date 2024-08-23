@@ -30,15 +30,9 @@ class UserController extends Controller
         return view('attendee.registered', compact('users'));
     }
 
+
+
   
-
-    public function absent() {
-      return view('attendee.absent');
-    }
-
-    public function checkedIn() {
-      return view('attendee.checkedIn');
-    }
 
 
      //#[Middleware(GenerateSafeSubmitToken::class)]

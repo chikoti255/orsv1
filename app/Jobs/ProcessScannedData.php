@@ -35,7 +35,7 @@ class ProcessScannedData implements ShouldQueue
         try {
           $parts= explode('|', $this->scannedData);
 
-          $userId= $parts[1]; //userid
+          $attendeeId= $parts[1]; //userid
           $email= $parts[2]; //email
           $qrcodeString= $parts[0]; //qrcodestring
 
@@ -46,9 +46,9 @@ class ProcessScannedData implements ShouldQueue
             if(!$scanned_database) {
                   $scans = new Scans;
                   $scans->qr_code_string= $qrcodeString;
-                  $scans->user_id= $userId;
+                  $scans->attendee_id= $attendeeId;
 
-                    Log::info('Processing scanned data: userId='. $userId. ', email='.$email . ', qrcodeString='. $qrcodeString);
+                    Log::info('Processing scanned data: userId='. $attendeeId. ', email='.$email . ', qrcodeString='. $qrcodeString);
                   $scans->save();
 
                     Log::info('Saving scan data: ' .json_encode($scans->toArray()));
