@@ -1,6 +1,7 @@
 
 let attendeeData = null;
 
+
 function viewUserDetails(attendeeId) {
 
     fetch(`/attendee/${attendeeId}`)
@@ -25,11 +26,15 @@ function viewUserDetails(attendeeId) {
                 if(data.image_url) {
 
                   qrCodeContainer.innerHTML= '';
-                  
+
                   const qrCodeImage = document.createElement('img');
                      qrCodeImage.src = data.image_url;
                      qrCodeImage.alt = 'QR Code';
-                     qrCodeImage.style.width = '200px'; // Adjust size if needed
+                     qrCodeContainer.style.display = 'flex';
+                     qrCodeContainer.style.justifyContent = 'center';
+                     qrCodeContainer.style.alignItems = 'center';
+
+                     //qrCodeImage.style.width = '200px'; // Adjust size if needed
 
                      // Append the image to the container
                      qrCodeContainer.appendChild(qrCodeImage);
@@ -63,10 +68,20 @@ function viewUserDetails(attendeeId) {
                   },
                   body: JSON.stringify(data)
               })
-                  .then(response => response.json())
+                  .then(response => {
+
+                                response.json()
+                                Swal.fire({
+                                    title: "Success!",
+                                    text: "Successfully Generated Qr Code!",
+                                    icon: "success"
+                                });
+                  })
                   .then(data => {
                         console.log(data);
                             /*qrCodeElement.innerHTML = `<img src="{{ asset('storage/${data.qr_code_path}') }}" alt="Qr Code" />`;*/
+
+
                   })
                   .catch(error => {
                       console.error(`Error fetching Qr Code: `, error);

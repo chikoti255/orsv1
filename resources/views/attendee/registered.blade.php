@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Storage;
 
 
 
+
 <div class="mt-4">
 <div class="container table-responsive" style="width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);">
 
@@ -213,11 +214,11 @@ use Illuminate\Support\Facades\Storage;
 
                         <div id="qrCodeContainer"></div>
 
-                      <div class="qrCodeButton">
-                            <button class="btn btn-primary" onClick="generateQrCode()">
-                                  Generate Qr Code
-                            </button>
-                      </div>
+                        <div class="qrCodeButton">
+                              <button class="btn btn-primary" onClick="generateQrCode()">
+                                    Generate Qr Code
+                              </button>
+                        </div>
             </div>
         </div>
 
