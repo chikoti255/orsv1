@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Response;
 use App\Jobs\GenerateQrCode;
 use App\Jobs\ProcessScannedData;
 use App\Models\RegisterAttendee;
+use Illuminate\Support\Facades\Log;
 
 
 
@@ -31,13 +32,19 @@ class QrCodeController extends Controller
 
 
       public function getImage($attendeeId) {
-          $attendee = QrCodeModel::findOrFail($attendeeId);
+
+          $attendee = QrCodeModel::where('attendee_id',$attendeeId)->firstOrFail();
 
           $imagePath = $attendee->qr_code_path;
 
-          if($imagePath) {
+          Log::info($imagePath);
 
-              return response()->json($imagePath);
+
+         if($imagePath) {
+
+              $imageUrl = asset('storage/'. $imagePath);
+
+              return response()->json(['image_url' => $imageUrl]);
               //returns image as binary response
           } else {
 

@@ -16,14 +16,27 @@ function viewUserDetails(attendeeId) {
                 attendeeData = data;
               console.log(attendeeData);
 
-              document.getElementById('qrCodeContainer').innerHTML = 'Generating Qr code....';
+              const qrCodeContainer = document.getElementById('qrCodeContainer');
+                  qrCodeContainer.innerHTML = 'Generating Qr code....';
 
-          fetch(`/attendee/image/${attendeeId}`)
-            .then(imageResponse => imageResponse.blob())
-            .then(blob => {
+          fetch(`/attendee/qr-code-image/${attendeeId}`)
+            .then(response => response.json())
+            .then(data => {
+                if(data.image_url) {
 
+                  qrCodeContainer.innerHTML= '';
+                  
+                  const qrCodeImage = document.createElement('img');
+                     qrCodeImage.src = data.image_url;
+                     qrCodeImage.alt = 'QR Code';
+                     qrCodeImage.style.width = '200px'; // Adjust size if needed
 
-                console.log(blob);
+                     // Append the image to the container
+                     qrCodeContainer.appendChild(qrCodeImage);
+
+                } else {
+                  console.error('Qr code not found');
+                }
 
             })
             .catch(error => console.error('Error fetching image: ', error));
