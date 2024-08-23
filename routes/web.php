@@ -25,11 +25,11 @@ Route::get('/scan-cont', function() {
   return view('scanner.scan-cont');
 })->name('scanContainer');
 
-Route::middleware('auth')->group(function() {
+/*Route::middleware('auth')->group(function() {
 
     Route::get('/qr-code/{id}', [QrCodeController::class, 'show'])->name('qr-code.show');
     Route::post('/user/{id}/generate', [QrCodeController::class, 'generateQrCode'])->name('qr-code.generateQrCode');
-});
+}); */
 
 Route::get('/myQr', function() {
   return view('qrCode.show');
@@ -41,9 +41,12 @@ Route::middleware('admin')->group(function() {
 
           Route::prefix('/analytics')->group(function() {
                 Route::get('/', [AnalyticsController::class, 'showAnalytics'])->name('analytics.show');
-          
+
                 Route::get('/get-countries', [AnalyticsController::class, 'getCountries'])->name('analytics.getCountries');
           });
+
+          Route::get('/qr-code/{id}', [QrCodeController::class, 'show'])->name('qr-code.show');
+          Route::post('/{id}/generate', [QrCodeController::class, 'generateQrCode'])->name('qr-code.generateQrCode');
 
     Route::get('/registered', [AttendeeController::class, 'index'])->name('attendee.registered');
     Route::post('/register_attendee', [AttendeeController::class, 'store'])->name('attendee.register');

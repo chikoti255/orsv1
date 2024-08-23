@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\RegisterAttendee;
+use App\Models\QrCodeModel;
 
 
 class AttendeeController extends Controller
@@ -53,9 +54,17 @@ class AttendeeController extends Controller
 
         public function index() {
 
-          $attendees= RegisterAttendee::all();
+          $attendees = RegisterAttendee::all();
 
-          return view('attendee.registered', compact('attendees'));
+        // Create an array to hold QR codes for each attendee
+        $qrCodes = [];
+
+        // Loop through each attendee and fetch their QR code
+        foreach ($attendees as $attendee) {
+            $qrCodes[$attendee->id] = QrCodeModel::where('user_id', $attendee->id)->first();
+        }
+
+          return view('attendee.registered', compact('attendees','qrCodes'));
         }
 
         public function show($id) {

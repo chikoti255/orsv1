@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\RegisterAttendee;
 
 class QrCodeModel extends Model
 {
@@ -18,7 +19,7 @@ class QrCodeModel extends Model
 
     public function user() {
       //the qr_code belongs to the user 1:1
-      return  $this->belongsTo(User::class, 'user_id');
+      return  $this->belongsTo(RegisterAttendee::class, 'user_id');
     }
 
     /* Accessor to get the QR code path directly

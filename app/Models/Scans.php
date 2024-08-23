@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use App\Models\RegisterAttendee;
 
 
 class Scans extends Model
@@ -18,6 +18,6 @@ class Scans extends Model
     ];
 
     public function user() {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(RegisterAttendee::class, 'user_id');
     }
 }

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 use App\Jobs\GenerateQrCode;
 use App\Jobs\ProcessScannedData;
+use App\Models\RegisterAttendee;
 
 
 
@@ -19,9 +20,10 @@ class QrCodeController extends Controller
 
     public function generateQrCode($id) {
           //$id= Auth::id();
+          $attendee = RegisterAttendee::all();
         GenerateQrCode::dispatch($id);
 
-        return redirect()->route('qr-code.show', ['id' => $id])->with('status', 'QR Code generation dispatched!');
+        return redirect()->route('attendee.registered', ['id' => $id])->with('status', 'QR Code generation dispatched!');
     }
 
 
@@ -29,14 +31,15 @@ class QrCodeController extends Controller
     public function show($id) {
 
       $qrCode= QrCodeModel::where('user_id', $id)->first();
-      $user = User::with('qrCode')->findOrFail($id);
+      $user = RegisterAttendee::with('qrCode')->findOrFail($id);
 
       /*if(!$qrCode) {
           return redirect()->back()->with('error', 'Qr Code not found');
       }*/
 
-      return view('qrCode.show', compact('user','qrCode'));
+      return view('attendee.registered', compact('user','qrCode'));
     }
+
 
 
 

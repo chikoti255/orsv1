@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\QrCodeModel;
+use App\Models\Scans;
 
 class RegisterAttendee extends Model
 {
@@ -18,5 +20,13 @@ class RegisterAttendee extends Model
         'confirm_payment','mobile_no'
     ];
 
+
+    public function qrCode() {
+      return $this->hasOne(QrCodeModel::class, 'user_id');
+    }
+
+    public function scans() {
+      return $this->hasMany(Scans::class);
+    }
 
 }

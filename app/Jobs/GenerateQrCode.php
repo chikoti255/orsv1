@@ -14,6 +14,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Storage;
 use App\Models\QrCodeModel;
 use App\Models\User;
+use App\Models\RegisterAttendee;
 
 
 class GenerateQrCode implements ShouldQueue
@@ -25,7 +26,7 @@ class GenerateQrCode implements ShouldQueue
      */
      protected $userId;
 
-     public $tries = 3;
+     //public $tries = 3;
 
     public function __construct($userId)
     {
@@ -38,7 +39,7 @@ class GenerateQrCode implements ShouldQueue
     public function handle(): void
     {
         try {
-          $user = User::find($this->userId);
+          $user = RegisterAttendee::find($this->userId);
 
             if(!$user) {
                 Log::error("User not found with id : {$user->id}");
