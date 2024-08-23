@@ -16,6 +16,18 @@ function viewUserDetails(attendeeId) {
                 attendeeData = data;
               console.log(attendeeData);
 
+              document.getElementById('qrCodeContainer').innerHTML = 'Generating Qr code....';
+
+          fetch(`/attendee/image/${attendeeId}`)
+            .then(imageResponse => imageResponse.blob())
+            .then(blob => {
+
+
+                console.log(blob);
+
+            })
+            .catch(error => console.error('Error fetching image: ', error));
+
     })
     .catch(error => console.error('Error fetching user details: ', error));
 
@@ -30,7 +42,6 @@ function viewUserDetails(attendeeId) {
             email: attendeeData.email
       };
 
-          document.getElementById('qrCodeContainer').innerHTML = '<p>Generating QR Code.....';
 
               fetch(`/attendee/qr-code/${attendeeData.id}`, {
                   method: 'POST',
@@ -41,8 +52,8 @@ function viewUserDetails(attendeeId) {
               })
                   .then(response => response.json())
                   .then(data => {
-                        const qrCodeElement = document.getElementById('qrCodeContainer');
-                            qrCodeElement.innerHTML = `<img src="{{ asset('storage/${data.qr_code_path}') }}" alt="Qr Code" />`;
+                        console.log(data);
+                            /*qrCodeElement.innerHTML = `<img src="{{ asset('storage/${data.qr_code_path}') }}" alt="Qr Code" />`;*/
                   })
                   .catch(error => {
                       console.error(`Error fetching Qr Code: `, error);

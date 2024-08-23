@@ -30,17 +30,20 @@ class QrCodeController extends Controller
 
 
 
-    /*public function show($id) {
+      public function getImage($attendeeId) {
+          $attendee = QrCodeModel::findOrFail($attendeeId);
 
-      $qrCode= QrCodeModel::where('user_id', $id)->first();
-      $user = RegisterAttendee::with('qrCode')->findOrFail($id);
+          $imagePath = $attendee->qr_code_path;
 
-      if(!$qrCode) {
-          return redirect()->back()->with('error', 'Qr Code not found');
+          if($imagePath) {
+
+              return response()->json($imagePath);
+              //returns image as binary response
+          } else {
+
+              return response()->json(['error' => 'Image not found'], 404);
+          }
       }
-
-      return view('attendee.registered', compact('user','qrCode'));
-    } */
 
 
 

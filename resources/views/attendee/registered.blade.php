@@ -211,9 +211,7 @@ use Illuminate\Support\Facades\Storage;
 
                   <div id="modal-body">Modal</div>
 
-                        <div id="qrCodeContainer">
-
-                        </div>
+                        <div id="qrCodeContainer"></div>
 
                       <div class="qrCodeButton">
                             <button class="btn btn-primary" onClick="generateQrCode()">

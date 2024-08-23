@@ -45,7 +45,7 @@ Route::middleware('admin')->group(function() {
                 Route::get('/get-countries', [AnalyticsController::class, 'getCountries'])->name('analytics.getCountries');
           });
 
-        //  Route::get('/qr-code/{attendee}', [QrCodeController::class, 'show'])->name('qr-code.show');
+        Route::get('/qr-code-image/{attendeeId}', [QrCodeController::class, 'getImage'])->name('qr-code.getImage');
           Route::post('/qr-code/{attendeeId}', [QrCodeController::class, 'generateQrCode'])->name('qr-code.generateQrCode');
 
     Route::get('/registered', [AttendeeController::class, 'index'])->name('attendee.registered');
