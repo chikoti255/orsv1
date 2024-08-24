@@ -5,42 +5,30 @@
     <meta charset="UTF-8">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/scanner.css') }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scanner</title>
-    <style>
 
-        body {
-          font-family: sans-serif;
-        }
-
-        #result {
-          font-weight: bold;
-          margin-top: 20px;
-        }
-        .scanner-container {
-          position: relative;
-          top: 20%;
-          left: 30%;
-        }
-
-    </style>
 
 </head>
 <body>
-      <div class="scanner-container" style="width: 700px; height: 700px;">
-          <div class="box">
-              <div id="reader" style="height: 500px;"></div>
-          </div>
+      <div class="scanner">
+              <div class="scanner-container" style="width: 700px; height: 700px;">
+                  <div class="box">
+                      <div id="reader" style="height: 500px;"></div>
+                  </div>
 
-            <!--<div id="tick" class="success">
-                <span class="material-symbols-outlined" style="font-size: 50px">
-                check_circle
-                </span>
-            </div>-->
 
-          <div id="result"></div>
-          <audio id="scan-sound" src="{{ asset('sounds/scanner_sound.mp3') }}" preload="auto"></audio>
+
+                  <audio id="scan-sound" src="{{ asset('sounds/scanner_sound.mp3') }}" preload="auto"></audio>
+              </div>
+
+              <div id="scanned-list-container">
+                  <h2>Scanned Attendees</h2>
+                      <div id="result">
+                          <!-- Scanned attendees will be appended here -->
+                      </div>
+              </div>
       </div>
 
 

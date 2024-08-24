@@ -26,7 +26,7 @@ class RegisterAttendee extends Model
     }
 
     public function scans() {
-      return $this->hasMany(Scans::class);
+      return $this->hasOne(Scans::class, 'attendee_id','id');
     }
 
 }

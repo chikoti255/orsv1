@@ -73,6 +73,14 @@ class AttendeeController extends Controller
             return view('attendee.checkedIn', ['scanned_attendees' => $scanned_attendees]);
         }
 
+        public function absent() {
+          $absent_attendees = RegisterAttendee::whereDoesntHave('scans')->get();
+
+
+          return view('attendee.absent', ['absent_attendees' => $absent_attendees]);
+
+        }
+
 
 
 

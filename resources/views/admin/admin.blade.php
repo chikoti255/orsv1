@@ -51,7 +51,7 @@
                     <i class="uil uil-user-check"></i>
                     <span class="link-name">Checked-in</span>
                 </a></li>
-                <li><a href="#">
+                <li><a href="{{ route('attendee.absent') }}">
                     <i class="uil uil-user-times"></i>
                     <span class="link-name">Absent</span>
                 </a></li>

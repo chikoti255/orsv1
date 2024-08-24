@@ -5,9 +5,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.css" />
 <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.semanticui.css" />
 
+      <h2 class="text-center">EACA Check In Attendees</h2>
+
 <table style="margin: auto; width: 100%;" id="example" class="ui celled table">
-
-
   <thead>
       <tr>
           <th>Id</th>

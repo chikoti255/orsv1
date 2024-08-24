@@ -52,7 +52,7 @@ Route::middleware('admin')->group(function() {
     Route::post('/register_attendee', [AttendeeController::class, 'store'])->name('attendee.register');
 
     Route::get('/checkedIn', [AttendeeController::class, 'checkedIn'])->name('attendee.checkedIn');
-    Route::get('/absent', [UserController::class, 'absent'])->name('attendee.absent');
+    Route::get('/absent', [AttendeeController::class, 'absent'])->name('attendee.absent');
 
 
 
