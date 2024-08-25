@@ -4,18 +4,13 @@
       font-family: sans-serif;
 
     }
-    .scanner {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
+    .scanner > .scanner-container {
+      position: relative;
+      top: 20%;
+      left: 30%;
     }
     #result {
       font-weight: bold;
       margin-top: 20px;
 
     }
-#scanned-list-container {
-    display: flex;
-    justify-content: center;
-}

@@ -84,35 +84,30 @@ async function onScanned(scanned_data) {
 function success(result) {
   const resultContainer = document.getElementById('result');
 
-  Swal.fire({
-    title: "Welcome!",
-    text: `${result}`,
-    icon: "success"
-  }).then(() => {
-    // Check if the result already exists in the container
-    const existingResult = Array.from(resultContainer.children).find(child => child.textContent.trim() === result.trim());
 
-    if (!existingResult) {
-      // Create a new element for the result
-      const newResult = document.createElement('p');
-      newResult.innerHTML = `<a class="text-center" href="#">${result}</a>`;
 
-      // Append the new result to the container
-      resultContainer.appendChild(newResult);
 
-      // Play the scan sound
-      scanSound.currentTime = 0; // Rewind to start
+    Swal.fire({
+      title: "Welcome!",
+      text: `${result}`,
+      icon: "success"
+    }).then(() => {
+
+      resultContainer.innerHTML = `
+      <p>
+      <a href="${result}">${result}</a>
+      </p>`;
+
+      resultContainer.style.display = "block";
+
       scanSound.play();
 
-      // Automatically scroll to the latest entry
-      resultContainer.scrollTop = resultContainer.scrollHeight;
+      setTimeout(() => {
+        resultContainer.style.display = "none";
+      }, 5000);
 
-      // Optionally, hide the result after a certain time
-    /*  setTimeout(() => {
-        newResult.style.display = "none";
-      }, 5000); */
-    }
-  });
+    });
 
-  onScanned(`${result}`);
+onScanned(`${result}`);
+
 }

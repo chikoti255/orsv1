@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/scanner.css') }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://cdn.tailwindcss.com"></script>
     <title>Scanner</title>
 
 
@@ -23,12 +24,11 @@
                   <audio id="scan-sound" src="{{ asset('sounds/scanner_sound.mp3') }}" preload="auto"></audio>
               </div>
 
-              <div id="scanned-list-container">
-                  <h2>Scanned Attendees</h2>
+
                       <div id="result">
                           <!-- Scanned attendees will be appended here -->
                       </div>
-              </div>
+
       </div>
 
 
