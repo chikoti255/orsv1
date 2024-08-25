@@ -76,12 +76,13 @@ function viewUserDetails(attendeeId) {
                                     text: "Successfully Generated Qr Code!",
                                     icon: "success"
                                 });
+
+                                  viewUserDetails(attendeeData.id);
                   })
                   .then(data => {
                         console.log(data);
                             /*qrCodeElement.innerHTML = `<img src="{{ asset('storage/${data.qr_code_path}') }}" alt="Qr Code" />`;*/
-
-
+            
                   })
                   .catch(error => {
                       console.error(`Error fetching Qr Code: `, error);
