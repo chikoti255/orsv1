@@ -26,7 +26,7 @@
                 </div>
                 <div style="display: flex; flex-direction: column; align-items: center;">
                       <span class="text">Registered</span>
-                      <span class="number">300</span>
+                      <span class="number">{{ $registered_attendee }}</span>
                 </div>
         </div>
         <div class="box box2">
@@ -39,7 +39,7 @@
                 </div>
                 <div style="display: flex; flex-direction: column; align-items: center;">
                       <span class="text">Checked-in</span>
-                      <span class="number">20</span>
+                      <span class="number">{{ $checked_in_attendee }}</span>
                 </div>
         </div>
         <div class="box box3">
@@ -52,7 +52,7 @@
                 </div>
                 <div style="display: flex; flex-direction: column; align-items: center;">
                       <span class="text">Absent</span>
-                      <span class="number">280</span>
+                      <span class="number">{{ $absent_attendee }}</span>
                 </div>
         </div>
     </div>

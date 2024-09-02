@@ -84,9 +84,6 @@ async function onScanned(scanned_data) {
 function success(result) {
   const resultContainer = document.getElementById('result');
 
-
-
-
     Swal.fire({
       title: "Welcome!",
       text: `${result}`,

@@ -11,6 +11,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Models\RegisterAttendee;
+use App\Models\Scans;
 //use App\Http\Requests\Auth\AdminLoginRequest;
 use Illuminate\Support\Facades\Session;
 
@@ -27,7 +29,14 @@ class LoginController extends Controller
       }
 
     public function dashboard() {
-        return view('admin.dashboard');
+
+      $registered_attendee= RegisterAttendee::count();
+
+      $checked_in_attendee= Scans::count();
+      $absent_attendee = RegisterAttendee::whereDoesntHave('scans')->count();
+
+
+        return view('admin.dashboard', compact('registered_attendee','checked_in_attendee','absent_attendee'));
     }
 
       public function login(Request $request): RedirectResponse

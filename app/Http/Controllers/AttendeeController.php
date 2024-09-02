@@ -79,6 +79,8 @@ class AttendeeController extends Controller
 
           return view('attendee.absent', ['absent_attendees' => $absent_attendees]);
 
+          //return dd($absent_attendees);
+
         }
 
 
