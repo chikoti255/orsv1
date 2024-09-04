@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+
+  #APP SERVER
+  orsv1:
+    container_name: orsv1-container
+    build: .
+    volumes:
+      - ./orsv1:/app
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mysql_db
+
+#Database SERVER
+  mysql_db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: attendance_app
+    ports:
+      - "3309:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+#PHP MY ADMIN SERVER
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql_db
+      PMA_ARBITRARY: 1
+      MYSQL_ROOT_PASSWORD: root
+    depends_on:
+      - mysql_db
+
+volumes:
+  mysql_data:
