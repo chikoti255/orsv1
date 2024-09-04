@@ -10,6 +10,7 @@ services:
       - ./orsv1:/app
     ports:
       - "8081:8081"
+    command: php artisan serve --host=0.0.0.0 --port=8081
     depends_on:
       - mysql_db
 

@@ -15,20 +15,23 @@ RUN apt-get update -y && apt-get install -y \
         libfreetype6-dev \
         zip \
         unzip \
-        && docker-php-ext-configure gd --with-freetype --with-jpeg
+        && docker-php-ext-configure gd --with-freetype --with-jpeg \
+        && docker-php-ext-install gd pdo_mysql mbstring
 
 #Installing composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN docker-php-ext-install gd pdo_mysql mbstring
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && composer --version
 
+#Copying the entire application code
+COPY . /app
 
 #Setting working directory
 WORKDIR /app
 COPY composer.json composer.lock .
 
 #install dependancies
-RUN composer install --no-scripts
-COPY . .
+RUN composer install --no-dev --optimize-autoloader
 
-CMD php artisan serve --host=0.0.0.0 --port=8081
+
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8081"]
 EXPOSE 8081
