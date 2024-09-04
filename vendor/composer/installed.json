@@ -2298,7 +2298,7 @@
             },
             "time": "2024-05-22T10:09:12+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "League\\Flysystem\\": "src"
@@ -2357,7 +2357,7 @@
             },
             "time": "2024-05-06T20:05:52+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "League\\Flysystem\\Local\\": ""
@@ -2758,7 +2758,7 @@
                     ]
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Carbon\\": "src/Carbon/"
@@ -5821,7 +5821,7 @@
                     "dev-main": "1.3.x-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "src/helpers.php"

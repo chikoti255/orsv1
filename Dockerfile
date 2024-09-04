@@ -22,12 +22,13 @@ RUN apt-get update -y && apt-get install -y \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer --version
 
-#Copying the entire application code
-COPY . /app
 
 #Setting working directory
 WORKDIR /app
 COPY composer.json composer.lock .
+
+#Copying the entire application code
+COPY . /app
 
 #install dependancies
 RUN composer install --no-dev --optimize-autoloader
