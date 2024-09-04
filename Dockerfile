@@ -7,6 +7,7 @@ RUN apt-get update -y && apt-get install -y \
         curl \
         openssl \
         libpng-dev \
+        libmariadb-dev \
         libonig-dev \
         libxml2-dev \
         libpng-dev \
