@@ -7,10 +7,11 @@ services:
     container_name: orsv1-container
     build: .
     volumes:
-      - ./orsv1:/app
+      - .:/app
+    working_dir: /app
     ports:
       - "8081:8081"
-    command: php artisan serve --host=0.0.0.0 --port=8081
+    command: ["php","artisan","serve","--host=0.0.0.0", "--port=8081"]
     depends_on:
       - mysql_db
 

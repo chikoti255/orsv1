@@ -33,6 +33,6 @@ COPY . /app
 #install dependancies
 RUN composer install --no-dev --optimize-autoloader
 
+EXPOSE 8081
 
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8081"]
-EXPOSE 8081
