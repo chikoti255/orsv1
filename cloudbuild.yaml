@@ -1,0 +1,13 @@
+steps:
+  # Step 1: builing docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/orsv1-431906/gcr.io/orsv1:latest', '.']
+
+  # Step 2: Push the Docker image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/orsv1-431906/gcr.io/orsv1:latest']
+
+  # Step 3: Deploy the Docker image to Cloud RUN
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args: ['run', 'deploy', 'orsv1', '--image', 'us-central1-docker.pkg.dev/orsv1-431906/gcr.io/orsv1:latest', '--platform', 'managed', '--region', 'us-central1']
